@@ -34,17 +34,17 @@ window.aiAssistantDemoData = {
     {
       role: "user",
       label: "Sample User",
-      message: "Can you draft a follow-up reply for Demo Lead 014 about a CRM request?"
+      message: "Can you prepare a follow-up draft for Demo Lead 014?"
     },
     {
       role: "assistant",
       label: "AI Assistant Draft",
-      message: "Draft prepared for human review: Thank you for sharing the CRM request. I can help review the workflow, required fields, follow-up stages, and reporting needs before preparing a scoped proposal."
+      message: "I can prepare a follow-up draft and flag missing CRM details for human review before anything is sent."
     },
     {
       role: "user",
       label: "Sample User",
-      message: "Which sample documents did you use?"
+      message: "Which sample sources did you use?"
     },
     {
       role: "assistant",
@@ -59,7 +59,7 @@ window.aiAssistantDemoData = {
     {
       role: "assistant",
       label: "AI Assistant Draft",
-      message: "This demo keeps external messages in human review. The assistant can prepare drafts, but a person should approve content before sending."
+      message: "No. This demo keeps external messages under human review. A team member must approve the draft before sending."
     }
   ],
   knowledgeSources: [
