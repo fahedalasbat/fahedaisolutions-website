@@ -219,7 +219,7 @@
       const targetAttributes = isExternal ? ' target="_blank" rel="noopener"' : "";
 
       return `
-        <a class="contact-link tone-${escapeHTML(link.tone)}" href="${escapeHTML(link.href)}"${targetAttributes}>
+        <a class="contact-link tone-${escapeHTML(link.tone)}" href="${escapeHTML(link.href)}"${targetAttributes} aria-label="${escapeHTML(link.label)}: ${escapeHTML(link.value)}">
           <span>${escapeHTML(link.label)}</span>
           <strong>${escapeHTML(link.value)}</strong>
         </a>

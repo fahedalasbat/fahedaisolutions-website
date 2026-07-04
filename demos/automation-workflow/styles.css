@@ -852,7 +852,8 @@ body.capture-mode .footer {
   }
 
   .hero-grid,
-  .operations-grid {
+  .operations-grid,
+  body.capture-mode .operations-grid {
     grid-template-columns: 1fr;
   }
 
@@ -862,7 +863,8 @@ body.capture-mode .footer {
     grid-template-columns: 1fr;
   }
 
-  .queue-panel {
+  .queue-panel,
+  body.capture-mode .queue-panel {
     grid-column: span 1;
   }
 

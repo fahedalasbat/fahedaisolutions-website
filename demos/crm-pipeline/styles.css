@@ -835,7 +835,8 @@ body.capture-mode .footer {
   .hero-grid,
   .kpi-grid,
   .pipeline-board,
-  .crm-grid {
+  .crm-grid,
+  body.capture-mode .crm-grid {
     grid-template-columns: 1fr;
   }
 
