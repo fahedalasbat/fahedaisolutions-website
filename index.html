@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Fahed AI Solutions | AI & Software Systems for Business Operations</title>
+    <meta name="description" content="Fahed AI Solutions builds practical dashboards, automation workflows, CRM systems, AI assistant interfaces, web applications, and business operations tools.">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="topbar">
+        <a class="brand-block" href="#hero" aria-label="Fahed AI Solutions home">
+          <span class="brand-mark" aria-hidden="true">FA</span>
+          <span>
+            <strong id="brandName">Fahed AI Solutions</strong>
+            <em id="brandMeta">Lebanon | Remote</em>
+          </span>
+        </a>
+        <nav class="topnav" aria-label="Primary navigation">
+          <a href="#services">Services</a>
+          <a href="#portfolio">Portfolio</a>
+          <a href="#process">Process</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <span class="demo-label" id="demoLabel">Demo / Sample Data</span>
+      </header>
+
+      <main>
+        <section class="hero-section" id="hero" aria-label="Company hero">
+          <canvas class="hero-canvas" id="heroCanvas" aria-hidden="true"></canvas>
+          <div class="hero-overlay" aria-hidden="true"></div>
+          <div class="hero-content">
+            <p class="section-kicker" id="heroKicker">Founder-led software systems</p>
+            <h1 id="heroTitle">Practical AI and software systems for business operations.</h1>
+            <p class="hero-subtitle" id="heroSubtitle">
+              Fahed AI Solutions builds dashboards, automation, CRM workflows, AI assistants, web applications, and business operations systems.
+            </p>
+            <div class="hero-actions">
+              <a class="ds-button primary" href="#contact">
+                <span class="button-symbol" aria-hidden="true"></span>
+                Discuss a system
+              </a>
+              <a class="ds-button secondary" href="#portfolio">
+                <span class="button-symbol" aria-hidden="true"></span>
+                View demo assets
+              </a>
+            </div>
+            <div class="hero-proof" id="heroProof" aria-label="Company focus areas"></div>
+          </div>
+          <div class="hero-product-scene" id="heroProductScene" aria-label="Animated product interface preview"></div>
+        </section>
+
+        <section class="page-section" id="services" aria-labelledby="servicesTitle">
+          <div class="section-heading">
+            <span>01</span>
+            <div>
+              <p class="section-kicker">Services</p>
+              <h2 id="servicesTitle">Software systems for operational work</h2>
+            </div>
+          </div>
+          <div class="services-grid" id="servicesGrid"></div>
+        </section>
+
+        <section class="page-section" id="portfolio" aria-labelledby="portfolioTitle">
+          <div class="section-heading">
+            <span>02</span>
+            <div>
+              <p class="section-kicker">Portfolio</p>
+              <h2 id="portfolioTitle">Runnable demo assets</h2>
+            </div>
+          </div>
+          <div class="section-note">
+            <span>Demo / Sample Data</span>
+            <p>These cards open packaged sample/demo assets only. They are not real client work.</p>
+          </div>
+          <div class="portfolio-grid" id="portfolioGrid"></div>
+        </section>
+
+        <section class="page-section" id="process" aria-labelledby="processTitle">
+          <div class="section-heading">
+            <span>03</span>
+            <div>
+              <p class="section-kicker">Process</p>
+              <h2 id="processTitle">A practical path from idea to usable system</h2>
+            </div>
+          </div>
+          <div class="process-grid" id="processGrid"></div>
+        </section>
+
+        <section class="page-section about-section" id="about" aria-labelledby="aboutTitle">
+          <div class="section-heading">
+            <span>04</span>
+            <div>
+              <p class="section-kicker">About</p>
+              <h2 id="aboutTitle">Founder-led software engineering</h2>
+            </div>
+          </div>
+          <div class="about-layout">
+            <article class="about-card">
+              <p id="aboutText"></p>
+              <div class="founder-row">
+                <span class="brand-mark" aria-hidden="true">FA</span>
+                <div>
+                  <strong id="founderName">Fahed Al Asbat</strong>
+                  <em id="founderRole">AI &amp; Software Engineer</em>
+                </div>
+              </div>
+            </article>
+            <aside class="systems-panel" aria-label="System focus preview">
+              <div class="card-topline">
+                <span>System focus</span>
+                <em>Reusable foundation</em>
+              </div>
+              <div class="systems-list" id="systemsList"></div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="page-section contact-section" id="contact" aria-labelledby="contactTitle">
+          <div class="section-heading">
+            <span>05</span>
+            <div>
+              <p class="section-kicker">Contact</p>
+              <h2 id="contactTitle">Build a practical business system</h2>
+            </div>
+          </div>
+          <div class="contact-layout">
+            <article class="contact-card">
+              <h3>Project inquiry</h3>
+              <p>Share the workflow, dashboard, CRM, assistant, or web application you want to shape.</p>
+              <div class="contact-actions" id="contactActions"></div>
+            </article>
+            <form class="contact-form" id="contactForm">
+              <label>
+                <span>Project type</span>
+                <select name="projectType" id="projectType"></select>
+              </label>
+              <label>
+                <span>Focus</span>
+                <input type="text" name="focus" value="Business operations system">
+              </label>
+              <label class="wide">
+                <span>Brief</span>
+                <textarea name="brief" rows="4">Sample project brief for a dashboard, automation, CRM, AI assistant, or web application.</textarea>
+              </label>
+              <div class="form-actions">
+                <button class="ds-button primary" type="submit">
+                  <span class="button-symbol" aria-hidden="true"></span>
+                  Prepare sample inquiry
+                </button>
+                <span id="formState" aria-live="polite">Demo form ready</span>
+              </div>
+            </form>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div>
+          <strong>Fahed AI Solutions</strong>
+          <span>Founder-led AI and software engineering</span>
+        </div>
+        <nav aria-label="Footer navigation">
+          <a href="#services">Services</a>
+          <a href="#portfolio">Portfolio</a>
+          <a href="#process">Process</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <div class="footer-contact" id="footerContact"></div>
+      </footer>
+    </div>
+
+    <script src="site-data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

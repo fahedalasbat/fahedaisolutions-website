@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Business Operations Dashboard Demo | Fahed AI Solutions</title>
+    <meta name="description" content="A sample business operations dashboard demo by Fahed AI Solutions using demo data only.">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="dashboard-shell">
+      <header class="topbar">
+        <div class="brand-block">
+          <span class="brand-mark" aria-hidden="true">FA</span>
+          <div>
+            <p class="brand-name">Fahed AI Solutions</p>
+            <span class="demo-badge" id="demoLabel">Demo Dashboard - Sample Data</span>
+          </div>
+        </div>
+        <div class="topbar-right">
+          <div class="contact-line">
+            <span>Lebanon | Remote</span>
+            <span>fahed.sbat@icloud.com</span>
+          </div>
+          <div class="mini-cta" aria-label="Dashboard inquiry call to action">
+            <span>Need a dashboard like this?</span>
+            <strong>WhatsApp: +961 81 908 355</strong>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section class="dashboard-intro">
+          <div>
+            <p class="section-kicker">Portfolio Demo</p>
+            <h1 id="dashboardTitle">Business Operations Dashboard Demo</h1>
+            <p id="dashboardScope">Static sample dashboard for portfolio, proposal, website, LinkedIn Featured, and presentation use.</p>
+          </div>
+          <aside class="sample-card">
+            <span id="samplePeriod">Sample period: July 2026</span>
+            <strong>Operational view</strong>
+            <p id="disclaimer">All values, activities, SKUs, tasks, and chart data are sample/demo data only.</p>
+          </aside>
+        </section>
+
+        <section class="kpi-grid" id="kpiGrid" aria-label="Sample KPI cards"></section>
+
+        <section class="chart-grid" aria-label="Sample chart sections">
+          <article class="panel panel-large">
+            <div class="panel-header">
+              <div>
+                <p class="section-kicker">Chart</p>
+                <h2>Sales by Week</h2>
+              </div>
+              <span class="panel-note">Sample values</span>
+            </div>
+            <div class="sales-chart" id="salesChart"></div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="section-kicker">Chart</p>
+                <h2>Lead Sources</h2>
+              </div>
+              <span class="panel-note">Sample count</span>
+            </div>
+            <div class="source-list" id="leadSources"></div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="section-kicker">Chart</p>
+                <h2>Orders by Status</h2>
+              </div>
+              <span class="panel-note">Demo workflow</span>
+            </div>
+            <div class="orders-status" id="ordersStatus"></div>
+          </article>
+        </section>
+
+        <section class="operations-grid" aria-label="Sample operational sections">
+          <article class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="section-kicker">Operations</p>
+                <h2>Recent Activity</h2>
+              </div>
+            </div>
+            <ul class="activity-list" id="recentActivity"></ul>
+          </article>
+
+          <article class="panel table-panel">
+            <div class="panel-header">
+              <div>
+                <p class="section-kicker">Inventory</p>
+                <h2>Stock Alerts</h2>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>SKU</th>
+                    <th>Item</th>
+                    <th>Current</th>
+                    <th>Threshold</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="stockAlerts"></tbody>
+              </table>
+            </div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="section-kicker">Execution</p>
+                <h2>Open Tasks</h2>
+              </div>
+            </div>
+            <ul class="task-list" id="openTasks"></ul>
+          </article>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <span>Fahed AI Solutions</span>
+        <span>Business Operations Dashboard Demo v1</span>
+        <span>Demo/sample data only. Not a real client dashboard.</span>
+      </footer>
+    </div>
+
+    <script src="sample-data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

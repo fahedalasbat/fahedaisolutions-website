@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CRM Pipeline Demo | Fahed AI Solutions</title>
+    <meta name="description" content="A runnable CRM pipeline demo by Fahed AI Solutions using sample data only.">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="crm-shell">
+      <header class="topbar">
+        <div class="brand-block">
+          <span class="brand-mark" aria-hidden="true">FA</span>
+          <div>
+            <p class="brand-name">Fahed AI Solutions</p>
+            <span class="demo-badge" id="demoLabel">CRM Demo - Sample Data</span>
+          </div>
+        </div>
+        <div class="topbar-right">
+          <div class="contact-line">
+            <span>Lebanon | Remote</span>
+            <span>fahed.sbat@icloud.com</span>
+          </div>
+          <div class="mini-cta" aria-label="CRM inquiry call to action">
+            <span>Need a CRM like this?</span>
+            <strong>WhatsApp: +961 81 908 355</strong>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section class="hero-grid">
+          <div class="hero-panel">
+            <p class="section-kicker">Portfolio Demo</p>
+            <h1 id="demoTitle">CRM Pipeline Demo</h1>
+            <p id="demoScope">Sample CRM interface for tracking leads, follow-ups, proposals, and owner review actions.</p>
+          </div>
+          <aside class="sample-panel">
+            <span id="samplePeriod">Sample CRM view: July 2026</span>
+            <strong>Lead and customer management view</strong>
+            <p id="demoDisclaimer">Demo/sample data only. Not a real client CRM.</p>
+          </aside>
+        </section>
+
+        <section class="kpi-grid" id="kpiGrid" aria-label="Sample CRM KPI cards"></section>
+
+        <section class="pipeline-panel" aria-label="Sample CRM pipeline">
+          <div class="panel-header">
+            <div>
+              <p class="section-kicker">Pipeline</p>
+              <h2>Lead and customer stages</h2>
+            </div>
+            <span class="panel-note">Sample records only</span>
+          </div>
+          <div class="pipeline-board" id="pipelineBoard"></div>
+        </section>
+
+        <section class="crm-grid" aria-label="Sample CRM operations">
+          <article class="panel follow-panel">
+            <div class="panel-header">
+              <div>
+                <p class="section-kicker">Tasks</p>
+                <h2>Follow-Ups Due</h2>
+              </div>
+              <span class="panel-note">Owner action</span>
+            </div>
+            <ul class="follow-up-list" id="followUps"></ul>
+          </article>
+
+          <article class="panel source-panel">
+            <div class="panel-header">
+              <div>
+                <p class="section-kicker">Sources</p>
+                <h2>Lead Source Breakdown</h2>
+              </div>
+              <span class="panel-note">Demo counts</span>
+            </div>
+            <div class="source-list" id="sourceBreakdown"></div>
+          </article>
+
+          <article class="panel activity-panel">
+            <div class="panel-header">
+              <div>
+                <p class="section-kicker">Timeline</p>
+                <h2>Recent CRM Activity</h2>
+              </div>
+              <span class="panel-note">Sample log</span>
+            </div>
+            <ul class="activity-list" id="crmActivity"></ul>
+          </article>
+
+          <article class="panel owner-panel">
+            <div class="panel-header">
+              <div>
+                <p class="section-kicker">Review</p>
+                <h2>Human Review / Owner Action</h2>
+              </div>
+              <span class="panel-note">Manual decision</span>
+            </div>
+            <ul class="owner-list" id="ownerActions"></ul>
+          </article>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <span>Fahed AI Solutions</span>
+        <span id="footerVersion">CRM Demo v1</span>
+        <span>Demo/sample data only. Not a real client CRM.</span>
+      </footer>
+    </div>
+
+    <script src="sample-data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

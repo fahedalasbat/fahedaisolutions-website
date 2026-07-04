@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Automation Workflow Demo | Fahed AI Solutions</title>
+    <meta name="description" content="A runnable automation workflow demo by Fahed AI Solutions using sample data only.">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="demo-shell">
+      <header class="topbar">
+        <div class="brand-block">
+          <span class="brand-mark" aria-hidden="true">FA</span>
+          <div>
+            <p class="brand-name">Fahed AI Solutions</p>
+            <span class="demo-badge" id="demoLabel">Automation Workflow Demo - Sample Data</span>
+          </div>
+        </div>
+        <div class="topbar-right">
+          <div class="contact-line">
+            <span>Lebanon | Remote</span>
+            <span>fahed.sbat@icloud.com</span>
+          </div>
+          <div class="mini-cta" aria-label="Automation inquiry call to action">
+            <span>Need an automation like this?</span>
+            <strong>WhatsApp: +961 81 908 355</strong>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section class="hero-grid">
+          <div class="hero-panel">
+            <p class="section-kicker">Portfolio Demo</p>
+            <h1 id="demoTitle">Automation Workflow Demo</h1>
+            <p id="demoScope">A sample workflow showing how a lead can move through checks, task creation, notifications, dashboard updates, and human review.</p>
+            <div class="flow-summary" aria-label="Sample workflow summary">
+              <span>Lead received</span>
+              <span>Data checked</span>
+              <span>Task created</span>
+              <span>Notification sent</span>
+              <span>Dashboard updated</span>
+              <span>Human review</span>
+            </div>
+          </div>
+          <aside class="sample-panel">
+            <span id="samplePeriod">Sample run: July 2026</span>
+            <strong>Human review stays in the loop</strong>
+            <p id="demoDisclaimer">Demo/sample data only. Not a real client workflow.</p>
+          </aside>
+        </section>
+
+        <section class="workflow-panel" aria-label="Sample automation workflow">
+          <div class="panel-header">
+            <div>
+              <p class="section-kicker">Workflow</p>
+              <h2>Lead received to human review</h2>
+            </div>
+            <span class="panel-note">Sample automation path</span>
+          </div>
+          <div class="workflow-track" id="workflowTrack"></div>
+        </section>
+
+        <section class="status-grid" id="statusCards" aria-label="Sample workflow status cards"></section>
+
+        <section class="operations-grid" aria-label="Sample automation operations">
+          <article class="panel activity-panel">
+            <div class="panel-header">
+              <div>
+                <p class="section-kicker">Timeline</p>
+                <h2>Activity Log</h2>
+              </div>
+              <span class="panel-note">Demo events</span>
+            </div>
+            <ul class="activity-list" id="activityLog"></ul>
+          </article>
+
+          <article class="panel rules-panel">
+            <div class="panel-header">
+              <div>
+                <p class="section-kicker">Rules</p>
+                <h2>Automation Rules</h2>
+              </div>
+              <span class="panel-note">Human-reviewed</span>
+            </div>
+            <ul class="rules-list" id="rulesList"></ul>
+          </article>
+
+          <article class="panel queue-panel">
+            <div class="panel-header">
+              <div>
+                <p class="section-kicker">Queue</p>
+                <h2>Sample Items</h2>
+              </div>
+              <span class="panel-note">No real records</span>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Item</th>
+                    <th>Source</th>
+                    <th>Stage</th>
+                    <th>Priority</th>
+                  </tr>
+                </thead>
+                <tbody id="sampleQueue"></tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <span>Fahed AI Solutions</span>
+        <span id="footerVersion">Automation Workflow Demo v1</span>
+        <span>Demo/sample data only. Not a real client workflow.</span>
+      </footer>
+    </div>
+
+    <script src="sample-data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

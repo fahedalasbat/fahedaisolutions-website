@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Business AI Assistant Demo | Fahed AI Solutions</title>
+    <meta name="description" content="A runnable business AI assistant interface demo by Fahed AI Solutions using sample data only.">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="assistant-shell">
+      <header class="topbar">
+        <div class="brand-block">
+          <span class="brand-mark" aria-hidden="true">FA</span>
+          <div>
+            <p class="brand-name">Fahed AI Solutions</p>
+            <span class="demo-badge" id="demoLabel">AI Assistant Demo - Sample Data</span>
+          </div>
+        </div>
+        <div class="topbar-right">
+          <div class="contact-line">
+            <span>Lebanon | Remote</span>
+            <span>fahed.sbat@icloud.com</span>
+          </div>
+          <div class="mini-cta" aria-label="AI assistant inquiry call to action">
+            <span>Need an AI assistant like this?</span>
+            <strong>WhatsApp: +961 81 908 355</strong>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section class="hero-grid">
+          <div class="hero-panel">
+            <p class="section-kicker">Portfolio Demo</p>
+            <h1 id="demoTitle">Business AI Assistant Demo</h1>
+            <p id="demoScope">Safe sample interface for drafting replies, reviewing business context, and preparing owner-approved actions.</p>
+          </div>
+          <aside class="sample-panel">
+            <span id="samplePeriod">Sample assistant view: July 2026</span>
+            <strong>Drafts stay under human review</strong>
+            <p id="demoDisclaimer">Demo/sample data only. Not a real client AI system.</p>
+            <div class="hero-typing-preview" aria-live="polite">
+              <div class="preview-topline">
+                <strong>AI Assistant Draft</strong>
+                <em>Demo preview</em>
+              </div>
+              <div class="typing-indicator compact" aria-label="Demo assistant is typing">
+                <i></i>
+                <i></i>
+                <i></i>
+              </div>
+              <p id="heroTypedPreview"></p>
+              <small>Human review required before sending.</small>
+            </div>
+          </aside>
+        </section>
+
+        <section class="kpi-grid" id="kpiGrid" aria-label="Sample AI assistant status cards"></section>
+
+        <section class="assistant-grid" aria-label="Sample AI assistant workspace">
+          <article class="panel chat-card">
+            <div class="panel-header">
+              <div>
+                <p class="section-kicker">Chat</p>
+                <h2>Sample Assistant Conversation</h2>
+              </div>
+              <span class="panel-note">Draft only</span>
+            </div>
+            <div class="chat-panel" id="chatPanel"></div>
+          </article>
+
+          <article class="panel knowledge-card">
+            <div class="panel-header">
+              <div>
+                <p class="section-kicker">Knowledge</p>
+                <h2>Sample Sources</h2>
+              </div>
+              <span class="panel-note">No private docs</span>
+            </div>
+            <div class="source-list" id="knowledgeSources"></div>
+          </article>
+
+          <article class="panel actions-card">
+            <div class="panel-header">
+              <div>
+                <p class="section-kicker">Actions</p>
+                <h2>Suggested Actions</h2>
+              </div>
+              <span class="panel-note">Review first</span>
+            </div>
+            <ul class="action-list" id="suggestedActions"></ul>
+          </article>
+
+          <article class="panel review-card">
+            <div class="panel-header">
+              <div>
+                <p class="section-kicker">Approval</p>
+                <h2>Human Review / Approval</h2>
+              </div>
+              <span class="panel-note">Required</span>
+            </div>
+            <ul class="review-list" id="reviewItems"></ul>
+          </article>
+
+          <article class="panel safety-card">
+            <div class="panel-header">
+              <div>
+                <p class="section-kicker">Limits</p>
+                <h2>Safety Limits</h2>
+              </div>
+              <span class="panel-note">Visible guardrails</span>
+            </div>
+            <div class="limit-grid" id="safetyLimits"></div>
+          </article>
+
+          <article class="panel activity-card">
+            <div class="panel-header">
+              <div>
+                <p class="section-kicker">Timeline</p>
+                <h2>Activity Log</h2>
+              </div>
+              <span class="panel-note">Sample events</span>
+            </div>
+            <ul class="activity-list" id="activityLog"></ul>
+          </article>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <span>Fahed AI Solutions</span>
+        <span id="footerVersion">AI Assistant Demo v1</span>
+        <span>Demo/sample data only. Not a real client AI system.</span>
+      </footer>
+    </div>
+
+    <script src="sample-data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
