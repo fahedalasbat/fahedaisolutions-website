@@ -52,22 +52,99 @@
 
   function renderSalesChart() {
     const chart = getElement("salesChart");
-    const maxValue = Math.max(...data.salesByWeek.map((item) => item.value));
+    const maxValue = 6000;
+    const plot = {
+      left: 58,
+      right: 610,
+      top: 16,
+      bottom: 134
+    };
+    const chartHeight = plot.bottom - plot.top;
+    const barWidth = 18;
+    const guideValues = [6000, 4000, 2000, 0];
+    const step = (plot.right - plot.left) / (data.salesByWeek.length - 1);
 
-    chart.innerHTML = data.salesByWeek.map((item) => {
-      const height = Math.max(18, Math.round((item.value / maxValue) * 100));
+    const getY = (value) => plot.bottom - ((value / maxValue) * chartHeight);
+
+    const gridLines = guideValues.map((value) => {
+      const y = getY(value);
+      const label = value === 0 ? "$0" : "$" + (value / 1000) + "k";
+
+      return `
+        <g class="chart-guide">
+          <text x="18" y="${y + 4}">${label}</text>
+          <line x1="${plot.left}" y1="${y}" x2="${plot.right + 4}" y2="${y}"></line>
+        </g>
+      `;
+    }).join("");
+
+    const points = data.salesByWeek.map((item, index) => {
+      const x = plot.left + (index * step);
+      const y = getY(item.value);
+      return { x, y, item };
+    });
+
+    const bars = points.map((point, index) => {
+      const barHeight = Math.max(10, plot.bottom - point.y);
+      const x = point.x - (barWidth / 2);
+      const formattedValue = formatCurrency(point.item.value);
+
+      return `
+        <rect
+          class="sales-bar"
+          x="${x}"
+          y="${point.y}"
+          width="${barWidth}"
+          height="${barHeight}"
+          rx="6"
+          style="animation-delay: ${index * 70}ms"
+        >
+          <title>${escapeHTML(point.item.label)}: ${escapeHTML(formattedValue)}</title>
+        </rect>
+      `;
+    }).join("");
+
+    const path = points.map((point, index) => {
+      return `${index === 0 ? "M" : "L"} ${point.x} ${point.y}`;
+    }).join(" ");
+
+    const markers = points.map((point) => {
+      return `<circle class="trend-dot" cx="${point.x}" cy="${point.y}" r="2.2"></circle>`;
+    }).join("");
+
+    const xAxis = data.salesByWeek.map((item) => {
       const formattedValue = formatCurrency(item.value);
 
       return `
-        <div class="bar-column" aria-label="${escapeHTML(item.label)}: ${escapeHTML(formattedValue)}">
-          <div class="bar-track">
-            <div class="bar-fill" style="height: ${height}%"></div>
-          </div>
-          <span class="bar-value">${escapeHTML(formattedValue)}</span>
-          <span class="bar-label">${escapeHTML(item.label)}</span>
-        </div>
+        <span class="chart-x-item">
+          <strong>${escapeHTML(formattedValue)}</strong>
+          <em>${escapeHTML(item.label)}</em>
+        </span>
       `;
     }).join("");
+
+    chart.innerHTML = `
+      <div class="sales-chart-frame">
+        <svg class="sales-chart-svg" viewBox="0 0 640 152" role="img" aria-label="Sales by Week sample values from Week 1 to Week 5">
+          <defs>
+            <linearGradient id="salesBarGradient" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0%" stop-color="#37d5ff"></stop>
+              <stop offset="100%" stop-color="#2f8cff"></stop>
+            </linearGradient>
+            <linearGradient id="salesTrendGradient" x1="0" x2="1" y1="0" y2="0">
+              <stop offset="0%" stop-color="#52b6ff" stop-opacity="0.32"></stop>
+              <stop offset="54%" stop-color="#37d5ff" stop-opacity="0.68"></stop>
+              <stop offset="100%" stop-color="#52b6ff" stop-opacity="0.3"></stop>
+            </linearGradient>
+          </defs>
+          <g class="chart-guides" aria-hidden="true">${gridLines}</g>
+          <g class="chart-bars">${bars}</g>
+          <path class="trend-line" pathLength="1" d="${path}"></path>
+          <g class="trend-markers" aria-hidden="true">${markers}</g>
+        </svg>
+        <div class="chart-x-axis">${xAxis}</div>
+      </div>
+    `;
   }
 
   function renderLeadSources() {
