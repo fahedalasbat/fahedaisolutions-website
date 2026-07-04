@@ -305,14 +305,14 @@ button {
   position: absolute;
   left: -8%;
   right: -8%;
-  bottom: -6%;
+  bottom: -9%;
   z-index: 2;
-  height: 58%;
+  height: 50%;
   overflow: hidden;
   pointer-events: none;
-  opacity: 0.58;
-  -webkit-mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.96), rgba(0, 0, 0, 0.68) 42%, transparent 86%);
-  mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.96), rgba(0, 0, 0, 0.68) 42%, transparent 86%);
+  opacity: 0.68;
+  -webkit-mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.98), rgba(0, 0, 0, 0.78) 38%, rgba(0, 0, 0, 0.16) 76%, transparent 92%);
+  mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.98), rgba(0, 0, 0, 0.78) 38%, rgba(0, 0, 0, 0.16) 76%, transparent 92%);
 }
 
 .hero-wave-mesh svg {
@@ -339,18 +339,18 @@ button {
 
 .hero-wave-mesh .wave-lines path {
   stroke-width: 0.9;
-  filter: drop-shadow(0 0 5px rgba(49, 215, 255, 0.18));
-  opacity: 0.82;
+  filter: drop-shadow(0 0 6px rgba(49, 215, 255, 0.22));
+  opacity: 0.88;
 }
 
 .hero-wave-mesh .wave-cross path {
   stroke-width: 0.55;
-  opacity: 0.34;
+  opacity: 0.4;
 }
 
 .hero-wave-mesh .wave-points circle {
-  fill: rgba(223, 248, 255, 0.72);
-  filter: drop-shadow(0 0 5px rgba(49, 215, 255, 0.28));
+  fill: rgba(223, 248, 255, 0.8);
+  filter: drop-shadow(0 0 6px rgba(49, 215, 255, 0.34));
   animation: heroWavePointPulse 5.8s ease-in-out infinite alternate;
 }
 
@@ -2270,9 +2270,9 @@ h1 {
   }
 
   .hero-wave-mesh {
-    bottom: -8%;
-    height: 44%;
-    opacity: 0.4;
+    bottom: -9%;
+    height: 38%;
+    opacity: 0.34;
   }
 
   .hero-product-scene::before {
@@ -2431,8 +2431,8 @@ h1 {
 
   .hero-wave-mesh {
     bottom: -10%;
-    height: 34%;
-    opacity: 0.3;
+    height: 30%;
+    opacity: 0.26;
   }
 
   .hero-product-scene::before,
