@@ -537,7 +537,7 @@ h1 {
 
 .hero-actions,
 .contact-actions,
-.form-actions {
+.cta-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
@@ -673,7 +673,7 @@ h1 {
 .about-card,
 .systems-panel,
 .contact-card,
-.contact-form {
+.contact-cta-card {
   position: relative;
   overflow: hidden;
   border: 1px solid rgba(117, 171, 255, 0.2);
@@ -700,7 +700,7 @@ h1 {
 .about-card:hover,
 .systems-panel:hover,
 .contact-card:hover,
-.contact-form:hover {
+.contact-cta-card:hover {
   border-color: color-mix(in srgb, var(--tone, var(--color-blue)) 48%, rgba(117, 171, 255, 0.28));
   box-shadow: var(--shadow-md), var(--shadow-blue);
   transform: translateY(-4px);
@@ -874,7 +874,8 @@ h1 {
 .service-card h3,
 .portfolio-card h3,
 .process-card h3,
-.contact-card h3 {
+.contact-card h3,
+.contact-cta-card h3 {
   color: var(--color-text);
   font-size: 1.08rem;
   line-height: 1.2;
@@ -884,7 +885,8 @@ h1 {
 .portfolio-card p,
 .process-card p,
 .about-card p,
-.contact-card p {
+.contact-card p,
+.contact-cta-card p {
   color: var(--color-muted);
   font-size: 0.88rem;
   line-height: 1.55;
@@ -1016,7 +1018,7 @@ h1 {
 .about-card,
 .systems-panel,
 .contact-card,
-.contact-form {
+.contact-cta-card {
   min-width: 0;
   padding: 18px;
 }
@@ -1101,64 +1103,14 @@ h1 {
   overflow-wrap: anywhere;
 }
 
-.contact-form {
+.contact-cta-card {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-content: center;
   gap: 12px;
 }
 
-label {
-  display: grid;
-  gap: 7px;
-  min-width: 0;
-  color: var(--color-muted);
-  font-size: 0.82rem;
-  font-weight: 750;
-}
-
-label.wide {
-  grid-column: 1 / -1;
-}
-
-input,
-select,
-textarea {
-  width: 100%;
-  min-width: 0;
-  border: 1px solid rgba(117, 171, 255, 0.25);
-  border-radius: var(--radius-sm);
-  color: var(--color-text);
-  background: rgba(3, 8, 18, 0.62);
-  outline: none;
-}
-
-input,
-select {
-  min-height: 42px;
-  padding: 10px 11px;
-}
-
-textarea {
-  resize: vertical;
-  padding: 11px;
-  line-height: 1.45;
-}
-
-input:focus,
-select:focus,
-textarea:focus {
-  border-color: var(--color-border-strong);
-  box-shadow: var(--shadow-blue);
-}
-
-.form-actions {
-  grid-column: 1 / -1;
-  align-items: center;
-}
-
-.form-actions span {
-  color: var(--color-muted);
-  font-size: 0.84rem;
+.cta-actions {
+  margin-top: 4px;
 }
 
 .site-footer {
@@ -1457,7 +1409,7 @@ textarea:focus {
   .services-grid,
   .portfolio-grid,
   .process-grid,
-  .contact-form,
+  .contact-cta-card,
   .site-footer {
     grid-template-columns: 1fr;
   }
@@ -1509,7 +1461,7 @@ textarea:focus {
   .hero-actions .ds-button,
   .contact-actions,
   .contact-link,
-  .form-actions .ds-button {
+  .cta-actions .ds-button {
     width: 100%;
   }
 
@@ -1523,7 +1475,7 @@ textarea:focus {
   .about-card,
   .systems-panel,
   .contact-card,
-  .contact-form {
+  .contact-cta-card {
     padding: 14px;
   }
 }
@@ -1549,7 +1501,7 @@ textarea:focus {
   .about-card:hover,
   .systems-panel:hover,
   .contact-card:hover,
-  .contact-form:hover,
+  .contact-cta-card:hover,
   .ds-button:hover,
   .demo-link:hover,
   .contact-link:hover {

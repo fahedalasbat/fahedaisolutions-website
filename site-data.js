@@ -146,7 +146,6 @@
       ]
     },
     contact: {
-      projectTypes: ["Dashboard", "Automation", "CRM", "AI Assistant", "Web Application", "Business Operations System"],
       links: [
         { label: "Email", value: "fahed.sbat@icloud.com", href: "mailto:fahed.sbat@icloud.com", tone: "blue" },
         { label: "WhatsApp", value: "+961 81 908 355", href: "https://wa.me/96181908355", tone: "green" },

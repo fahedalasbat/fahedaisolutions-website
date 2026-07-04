@@ -226,10 +226,6 @@
       `;
     }).join("");
 
-    getElement("projectType").innerHTML = data.contact.projectTypes.map((type) => {
-      return `<option>${escapeHTML(type)}</option>`;
-    }).join("");
-
     getElement("footerContact").innerHTML = `
       <strong>Contact</strong>
       ${data.contact.links.map((link) => {
@@ -243,7 +239,7 @@
 
   function initRevealOnScroll() {
     const revealItems = document.querySelectorAll(
-      ".page-section, .service-card, .portfolio-card, .process-card, .about-card, .systems-panel, .contact-card, .contact-form"
+      ".page-section, .service-card, .portfolio-card, .process-card, .about-card, .systems-panel, .contact-card, .contact-cta-card"
     );
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
