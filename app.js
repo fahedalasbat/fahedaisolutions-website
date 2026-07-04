@@ -214,18 +214,6 @@
   }
 
   function renderContact() {
-    getElement("contactActions").innerHTML = data.contact.links.map((link) => {
-      const isExternal = /^https?:\/\//.test(link.href);
-      const targetAttributes = isExternal ? ' target="_blank" rel="noopener"' : "";
-
-      return `
-        <a class="contact-link tone-${escapeHTML(link.tone)}" href="${escapeHTML(link.href)}"${targetAttributes} aria-label="${escapeHTML(link.label)}: ${escapeHTML(link.value)}">
-          <span>${escapeHTML(link.label)}</span>
-          <strong>${escapeHTML(link.value)}</strong>
-        </a>
-      `;
-    }).join("");
-
     getElement("footerContact").innerHTML = `
       <strong>Contact</strong>
       ${data.contact.links.map((link) => {
@@ -239,7 +227,7 @@
 
   function initRevealOnScroll() {
     const revealItems = document.querySelectorAll(
-      ".page-section, .service-card, .portfolio-card, .process-card, .about-card, .systems-panel, .contact-card, .contact-cta-card"
+      ".page-section, .service-card, .portfolio-card, .process-card, .about-card, .systems-panel"
     );
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
