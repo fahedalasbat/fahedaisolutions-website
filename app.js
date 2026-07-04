@@ -70,8 +70,17 @@
           <span>CRM Pipeline</span>
         </div>
         <div class="preview-ai-row">
-          <strong>AI Assistant</strong>
-          <span>Draft ready for review</span>
+          <div class="preview-ai-copy">
+            <strong>AI Assistant</strong>
+            <span>Draft ready for human review</span>
+          </div>
+          <div class="preview-ai-typing" aria-hidden="true">
+            <i></i>
+            <i></i>
+            <i></i>
+          </div>
+          <p>Preparing a reviewed draft from sample business context.</p>
+          <em>Human review required</em>
         </div>
       </article>
     `;
@@ -105,9 +114,20 @@
     }
 
     if (mockup.type === "assistant") {
+      const sampleRequest = mockup.messages[0] || "Sample request";
+      const draftStatus = mockup.messages[1] || "Draft ready for review";
+
       return `
         <div class="service-mockup assistant-mockup" aria-hidden="true">
-          ${mockup.messages.map((message) => `<p>${escapeHTML(message)}</p>`).join("")}
+          <p class="assistant-service-bubble">${escapeHTML(sampleRequest)}</p>
+          <div class="assistant-service-draft">
+            <span>${escapeHTML(draftStatus)}</span>
+            <div class="assistant-service-dots">
+              <i></i>
+              <i></i>
+              <i></i>
+            </div>
+          </div>
         </div>
       `;
     }
