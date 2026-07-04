@@ -97,7 +97,7 @@
         title: "Business AI Assistant Demo",
         type: "AI Assistant",
         description: "A sample assistant interface for intake, draft support, responses, and review.",
-        href: "./demos/ai-assistant/index.html?capture=1",
+        href: "demos/ai-assistant/index.html?v=ai-motion-2",
         label: "Demo / Sample Data",
         tone: "violet"
       }
