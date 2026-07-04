@@ -1208,7 +1208,10 @@ textarea:focus {
 }
 
 .footer-rights {
+  display: flex;
+  flex-wrap: wrap;
   grid-column: 1 / -1;
+  gap: 6px 14px;
   margin: 2px 0 0;
   padding-top: 12px;
   border-top: 1px solid rgba(117, 171, 255, 0.08);

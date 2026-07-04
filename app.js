@@ -241,15 +241,6 @@
     `;
   }
 
-  function bindInteractions() {
-    const form = getElement("contactForm");
-
-    form.addEventListener("submit", (event) => {
-      event.preventDefault();
-      getElement("formState").textContent = "Sample inquiry prepared. Use email or WhatsApp to send details.";
-    });
-  }
-
   function initRevealOnScroll() {
     const revealItems = document.querySelectorAll(
       ".page-section, .service-card, .portfolio-card, .process-card, .about-card, .systems-panel, .contact-card, .contact-form"
@@ -430,7 +421,6 @@
     renderProcess();
     renderAbout();
     renderContact();
-    bindInteractions();
     initRevealOnScroll();
     drawHeroCanvas();
   }
