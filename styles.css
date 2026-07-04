@@ -1125,6 +1125,54 @@ h1 {
   font-size: 0.82rem;
 }
 
+.footer-intake-card {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 18px;
+  padding: 16px;
+  border: 1px solid rgba(55, 213, 255, 0.24);
+  border-radius: var(--radius-md);
+  background:
+    linear-gradient(135deg, rgba(47, 140, 255, 0.18), rgba(55, 213, 255, 0.055)),
+    rgba(7, 17, 31, 0.78);
+  box-shadow: var(--shadow-sm), 0 0 34px rgba(47, 140, 255, 0.12);
+}
+
+.footer-intake-card h2 {
+  margin-top: 7px;
+  color: var(--color-text);
+  font-size: 1.22rem;
+  line-height: 1.18;
+}
+
+.footer-intake-card p {
+  max-width: 780px;
+  margin-top: 8px;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.footer-intake-label {
+  display: inline-flex;
+  width: fit-content;
+  max-width: 100%;
+  padding: 5px 8px;
+  border: 1px solid rgba(55, 213, 255, 0.26);
+  border-radius: 999px;
+  color: var(--color-cyan);
+  background: rgba(55, 213, 255, 0.08);
+  font-size: 0.7rem;
+  font-weight: 850;
+  line-height: 1.2;
+}
+
+.footer-intake-actions {
+  justify-self: end;
+}
+
 .footer-brand,
 .footer-column {
   display: grid;
@@ -1422,6 +1470,14 @@ h1 {
     font-size: 1.28rem;
   }
 
+  .footer-intake-card {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-intake-actions {
+    justify-self: start;
+  }
+
   .footer-contact {
     justify-content: flex-start;
   }
@@ -1461,7 +1517,9 @@ h1 {
   .hero-actions .ds-button,
   .contact-actions,
   .contact-link,
-  .cta-actions .ds-button {
+  .cta-actions .ds-button,
+  .footer-intake-actions,
+  .footer-intake-actions .ds-button {
     width: 100%;
   }
 
