@@ -232,6 +232,10 @@ h1 {
   line-height: 1.34;
 }
 
+.mobile-sample-period {
+  display: none;
+}
+
 .hero-typing-preview {
   margin-top: 12px;
   padding: 10px;
@@ -825,6 +829,85 @@ body.capture-mode .footer {
   }
 }
 
+@media (max-width: 767px) {
+  .assistant-shell {
+    padding: 12px;
+  }
+
+  .hero-grid {
+    display: block;
+  }
+
+  .hero-panel {
+    width: 100%;
+    min-height: auto;
+  }
+
+  h1 {
+    max-width: 100%;
+    font-size: clamp(1.9rem, 8.4vw, 2.35rem);
+    line-height: 1.08;
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: manual;
+  }
+
+  .hero-panel > p:not(.section-kicker) {
+    margin-top: 10px;
+  }
+
+  .mobile-sample-period {
+    display: inline-flex;
+    width: fit-content;
+    max-width: 100%;
+    margin-top: 12px;
+    padding: 6px 9px;
+    border: 1px solid rgba(55, 213, 255, 0.42);
+    border-radius: 999px;
+    color: var(--blue-bright);
+    background: rgba(55, 213, 255, 0.1);
+    font-size: 0.76rem;
+    font-weight: 800;
+    line-height: 1.2;
+  }
+
+  .sample-panel {
+    min-height: auto;
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  .sample-panel > #samplePeriod {
+    display: none;
+  }
+
+  .kpi-grid,
+  .assistant-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .assistant-grid {
+    grid-template-areas:
+      "chat"
+      "knowledge"
+      "actions"
+      "review"
+      "safety"
+      "activity";
+  }
+
+  .panel-header,
+  .preview-topline {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .hero-typing-preview {
+    width: 100%;
+  }
+}
+
 @media (max-width: 520px) {
   .contact-line {
     display: grid;
@@ -836,7 +919,8 @@ body.capture-mode .footer {
   }
 
   h1 {
-    font-size: 2rem;
+    font-size: clamp(1.68rem, 7.4vw, 1.9rem);
+    line-height: 1.12;
   }
 
   .action-item,

@@ -30,12 +30,18 @@
   }
 
   function renderMeta() {
+    const mobileSamplePeriod = getElement("mobileSamplePeriod");
+
     getElement("demoLabel").textContent = data.meta.label;
     getElement("demoTitle").textContent = data.meta.title;
     getElement("demoScope").textContent = data.meta.scope;
     getElement("samplePeriod").textContent = data.meta.period;
     getElement("demoDisclaimer").textContent = data.meta.disclaimer;
     getElement("footerVersion").textContent = data.meta.version;
+
+    if (mobileSamplePeriod) {
+      mobileSamplePeriod.textContent = data.meta.period;
+    }
   }
 
   function renderKpis() {

@@ -231,9 +231,13 @@
     }).join("");
 
     getElement("footerContact").innerHTML = `
-      <span>${escapeHTML(data.meta.location)}</span>
-      <a href="mailto:${escapeHTML(data.meta.email)}">${escapeHTML(data.meta.email)}</a>
-      <a href="${escapeHTML(data.contact.links[1].href)}" target="_blank" rel="noopener">${escapeHTML(data.meta.whatsapp)}</a>
+      <strong>Contact</strong>
+      ${data.contact.links.map((link) => {
+        const isExternal = /^https?:\/\//.test(link.href);
+        const targetAttributes = isExternal ? ' target="_blank" rel="noopener"' : "";
+
+        return `<a href="${escapeHTML(link.href)}"${targetAttributes} aria-label="${escapeHTML(link.label)}: ${escapeHTML(link.value)}">${escapeHTML(link.label)}</a>`;
+      }).join("")}
     `;
   }
 
