@@ -260,7 +260,7 @@ button {
   left: -8%;
   right: -8%;
   bottom: -4%;
-  z-index: 2;
+  z-index: 1;
   height: 45%;
   background:
     radial-gradient(circle, rgba(49, 215, 255, 0.21) 0 0.8px, transparent 1.6px),
@@ -271,7 +271,7 @@ button {
   background-position: 0 0, center, center, center;
   -webkit-mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.48) 48%, transparent 90%);
   mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.48) 48%, transparent 90%);
-  opacity: 0.72;
+  opacity: 0.32;
   pointer-events: none;
   transform: translate3d(0, 0, 0);
   animation: heroMeshDrift 18s ease-in-out infinite alternate;
@@ -299,6 +299,67 @@ button {
   z-index: 0;
   width: 100%;
   height: 100%;
+}
+
+.hero-wave-mesh {
+  position: absolute;
+  left: -8%;
+  right: -8%;
+  bottom: -6%;
+  z-index: 2;
+  height: 58%;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0.58;
+  -webkit-mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.96), rgba(0, 0, 0, 0.68) 42%, transparent 86%);
+  mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.96), rgba(0, 0, 0, 0.68) 42%, transparent 86%);
+}
+
+.hero-wave-mesh svg {
+  display: block;
+  width: 116%;
+  height: 100%;
+  transform: translateX(-5%);
+  animation: heroWaveDrift 24s ease-in-out infinite alternate;
+}
+
+.hero-wave-mesh .wave-glow {
+  fill: url("#heroWaveGlow");
+  animation: heroWaveGlow 9s ease-in-out infinite alternate;
+}
+
+.hero-wave-mesh .wave-lines path,
+.hero-wave-mesh .wave-cross path {
+  fill: none;
+  stroke: url("#heroWaveLine");
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.hero-wave-mesh .wave-lines path {
+  stroke-width: 0.9;
+  filter: drop-shadow(0 0 5px rgba(49, 215, 255, 0.18));
+  opacity: 0.82;
+}
+
+.hero-wave-mesh .wave-cross path {
+  stroke-width: 0.55;
+  opacity: 0.34;
+}
+
+.hero-wave-mesh .wave-points circle {
+  fill: rgba(223, 248, 255, 0.72);
+  filter: drop-shadow(0 0 5px rgba(49, 215, 255, 0.28));
+  animation: heroWavePointPulse 5.8s ease-in-out infinite alternate;
+}
+
+.hero-wave-mesh .wave-points circle:nth-child(2n) {
+  animation-delay: 900ms;
+}
+
+.hero-wave-mesh .wave-points circle:nth-child(3n) {
+  animation-delay: 1600ms;
 }
 
 .hero-overlay {
@@ -1874,6 +1935,38 @@ h1 {
   }
 }
 
+@keyframes heroWaveDrift {
+  0% {
+    transform: translateX(-6%) translateY(0);
+  }
+
+  100% {
+    transform: translateX(-2%) translateY(-6px);
+  }
+}
+
+@keyframes heroWaveGlow {
+  0% {
+    opacity: 0.62;
+  }
+
+  100% {
+    opacity: 0.86;
+  }
+}
+
+@keyframes heroWavePointPulse {
+  0% {
+    opacity: 0.34;
+    transform: scale(0.92);
+  }
+
+  100% {
+    opacity: 0.82;
+    transform: scale(1.08);
+  }
+}
+
 @keyframes moduleFloat {
   0%,
   100% {
@@ -2176,6 +2269,12 @@ h1 {
     padding-top: 0;
   }
 
+  .hero-wave-mesh {
+    bottom: -8%;
+    height: 44%;
+    opacity: 0.4;
+  }
+
   .hero-product-scene::before {
     width: min(72%, 360px);
     height: 260px;
@@ -2239,6 +2338,7 @@ h1 {
   .hero-section::before {
     bottom: -8%;
     height: 32%;
+    opacity: 0.18;
     animation-name: heroMeshMobileDrift;
   }
 
@@ -2329,6 +2429,12 @@ h1 {
     padding: 0 18px 18px;
   }
 
+  .hero-wave-mesh {
+    bottom: -10%;
+    height: 34%;
+    opacity: 0.3;
+  }
+
   .hero-product-scene::before,
   .hero-product-scene::after {
     display: none;
@@ -2336,6 +2442,7 @@ h1 {
 
   .hero-section::before {
     height: 26%;
+    opacity: 0.14;
     animation-name: heroMeshMobileDrift;
   }
 

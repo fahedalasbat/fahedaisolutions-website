@@ -32,6 +32,51 @@
       <main>
         <section class="hero-section" id="hero" aria-label="Company hero">
           <canvas class="hero-canvas" id="heroCanvas" aria-hidden="true"></canvas>
+          <div class="hero-wave-mesh" aria-hidden="true">
+            <svg viewBox="0 0 1440 420" preserveAspectRatio="none" focusable="false">
+              <defs>
+                <radialGradient id="heroWaveGlow" cx="50%" cy="82%" r="58%">
+                  <stop offset="0%" stop-color="#31d7ff" stop-opacity="0.22"></stop>
+                  <stop offset="46%" stop-color="#00a3ff" stop-opacity="0.1"></stop>
+                  <stop offset="100%" stop-color="#00a3ff" stop-opacity="0"></stop>
+                </radialGradient>
+                <linearGradient id="heroWaveLine" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#31d7ff" stop-opacity="0"></stop>
+                  <stop offset="24%" stop-color="#31d7ff" stop-opacity="0.28"></stop>
+                  <stop offset="52%" stop-color="#75abff" stop-opacity="0.42"></stop>
+                  <stop offset="78%" stop-color="#31d7ff" stop-opacity="0.22"></stop>
+                  <stop offset="100%" stop-color="#31d7ff" stop-opacity="0"></stop>
+                </linearGradient>
+              </defs>
+              <rect class="wave-glow" x="0" y="0" width="1440" height="420"></rect>
+              <g class="wave-lines">
+                <path d="M0 252 C150 206 266 221 412 252 S700 314 862 262 S1140 188 1440 244"></path>
+                <path d="M0 292 C184 242 322 250 492 292 S772 354 946 296 S1210 232 1440 282"></path>
+                <path d="M0 332 C180 294 340 292 520 326 S836 378 1010 332 S1238 288 1440 316"></path>
+                <path d="M0 374 C198 342 370 340 560 364 S880 402 1060 366 S1278 332 1440 348"></path>
+              </g>
+              <g class="wave-cross">
+                <path d="M112 380 C298 318 424 302 606 324 S934 382 1268 286"></path>
+                <path d="M70 326 C270 286 458 278 658 302 S996 344 1364 252"></path>
+              </g>
+              <g class="wave-points">
+                <circle cx="188" cy="262" r="2"></circle>
+                <circle cx="356" cy="246" r="1.6"></circle>
+                <circle cx="524" cy="292" r="1.8"></circle>
+                <circle cx="694" cy="326" r="1.5"></circle>
+                <circle cx="862" cy="262" r="2"></circle>
+                <circle cx="1018" cy="224" r="1.7"></circle>
+                <circle cx="1186" cy="216" r="1.8"></circle>
+                <circle cx="1326" cy="238" r="1.4"></circle>
+                <circle cx="270" cy="338" r="1.5"></circle>
+                <circle cx="446" cy="352" r="1.8"></circle>
+                <circle cx="634" cy="368" r="1.4"></circle>
+                <circle cx="812" cy="386" r="1.7"></circle>
+                <circle cx="990" cy="340" r="1.8"></circle>
+                <circle cx="1164" cy="314" r="1.5"></circle>
+              </g>
+            </svg>
+          </div>
           <div class="hero-overlay" aria-hidden="true"></div>
           <div class="hero-content">
             <p class="section-kicker" id="heroKicker">Founder-led software systems</p>
