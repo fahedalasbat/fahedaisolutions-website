@@ -235,8 +235,6 @@
   function drawHeroCanvas() {
     const canvas = getElement("heroCanvas");
     const context = canvas.getContext("2d");
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    let animationFrame = null;
 
     function resize() {
       const bounds = canvas.getBoundingClientRect();
@@ -244,52 +242,46 @@
       canvas.width = Math.max(1, Math.floor(bounds.width * ratio));
       canvas.height = Math.max(1, Math.floor(bounds.height * ratio));
       context.setTransform(ratio, 0, 0, ratio, 0, 0);
-
-      if (reduceMotion) {
-        draw(0);
-      }
+      draw();
     }
 
-    function draw(time) {
+    function draw() {
       const width = canvas.clientWidth;
       const height = canvas.clientHeight;
-      const phase = reduceMotion ? 0 : time * 0.001;
 
       context.clearRect(0, 0, width, height);
       context.fillStyle = "#030610";
       context.fillRect(0, 0, width, height);
 
-      const glowShift = Math.sin(phase * 0.7) * width * 0.08;
-      const gradient = context.createLinearGradient(glowShift, 0, width, height);
+      const gradient = context.createLinearGradient(0, 0, width, height);
       gradient.addColorStop(0, "rgba(0, 163, 255, 0.18)");
       gradient.addColorStop(0.46, "rgba(49, 215, 255, 0.05)");
       gradient.addColorStop(1, "rgba(5, 9, 20, 0.9)");
       context.fillStyle = gradient;
       context.fillRect(0, 0, width, height);
 
-      const gridOffset = reduceMotion ? 0 : (phase * 10) % 44;
       context.strokeStyle = "rgba(117, 171, 255, 0.055)";
       context.lineWidth = 1;
-      for (let x = -44 + gridOffset; x < width; x += 44) {
+      for (let x = 0; x < width; x += 44) {
         context.beginPath();
         context.moveTo(x, 0);
         context.lineTo(x, height);
         context.stroke();
       }
-      for (let y = -44 + gridOffset; y < height; y += 44) {
+      for (let y = 0; y < height; y += 44) {
         context.beginPath();
         context.moveTo(0, y);
         context.lineTo(width, y);
         context.stroke();
       }
 
-      context.strokeStyle = "rgba(49, 215, 255, 0.12)";
+      context.strokeStyle = "rgba(49, 215, 255, 0.09)";
       context.lineWidth = 1;
       for (let row = 0; row < 4; row += 1) {
         context.beginPath();
         const baseY = height * 0.78 + row * 20;
         for (let x = 0; x <= width; x += 24) {
-          const y = baseY + Math.sin((x * 0.012) + phase + row * 0.9) * (8 + row * 2);
+          const y = baseY + Math.sin((x * 0.012) + row * 0.9) * (8 + row * 2);
           if (x === 0) {
             context.moveTo(x, y);
           } else {
@@ -299,42 +291,20 @@
         context.stroke();
       }
 
-      const particleCount = width < 720 ? 14 : 24;
+      const particleCount = width < 720 ? 10 : 18;
       for (let index = 0; index < particleCount; index += 1) {
-        const x = ((index * 97) + (phase * 12)) % Math.max(width, 1);
+        const x = (index * 97) % Math.max(width, 1);
         const y = ((index * 53) % Math.max(height * 0.72, 1)) + height * 0.08;
-        const alpha = 0.12 + Math.sin(phase + index) * 0.05;
+        const alpha = 0.1 + (index % 5) * 0.012;
         context.fillStyle = `rgba(49, 215, 255, ${alpha})`;
         context.beginPath();
         context.arc(x, y, 1.4, 0, Math.PI * 2);
         context.fill();
       }
-
-      if (!reduceMotion) {
-        animationFrame = window.requestAnimationFrame(draw);
-      }
     }
 
     resize();
     window.addEventListener("resize", resize);
-    if (reduceMotion) {
-      draw(0);
-    } else {
-      animationFrame = window.requestAnimationFrame(draw);
-    }
-
-    document.addEventListener("visibilitychange", () => {
-      if (reduceMotion) {
-        return;
-      }
-
-      if (document.hidden && animationFrame) {
-        window.cancelAnimationFrame(animationFrame);
-        animationFrame = null;
-      } else if (!document.hidden && !animationFrame) {
-        animationFrame = window.requestAnimationFrame(draw);
-      }
-    });
   }
 
   function init() {

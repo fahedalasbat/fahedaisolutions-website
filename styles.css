@@ -229,10 +229,31 @@ button {
   box-shadow: var(--shadow-lg);
 }
 
+.hero-section::before {
+  position: absolute;
+  left: -8%;
+  right: -8%;
+  bottom: -4%;
+  z-index: 2;
+  height: 38%;
+  background:
+    repeating-linear-gradient(8deg, rgba(49, 215, 255, 0.14) 0 1px, transparent 1px 34px),
+    repeating-linear-gradient(-8deg, rgba(0, 163, 255, 0.1) 0 1px, transparent 1px 38px),
+    radial-gradient(ellipse at center, rgba(0, 163, 255, 0.18), transparent 68%);
+  -webkit-mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent 84%);
+  mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent 84%);
+  opacity: 0.62;
+  pointer-events: none;
+  transform: translate3d(0, 0, 0);
+  animation: heroMeshDrift 18s ease-in-out infinite alternate;
+  content: "";
+}
+
 .hero-section::after {
   position: absolute;
   right: -16%;
   bottom: -30%;
+  z-index: 2;
   width: 68%;
   height: 54%;
   border-radius: 50%;
@@ -246,6 +267,7 @@ button {
 .hero-canvas {
   position: absolute;
   inset: 0;
+  z-index: 0;
   width: 100%;
   height: 100%;
 }
@@ -253,6 +275,7 @@ button {
 .hero-overlay {
   position: absolute;
   inset: 0;
+  z-index: 1;
   background:
     linear-gradient(90deg, rgba(3, 6, 16, 0.9) 0%, rgba(3, 6, 16, 0.68) 48%, rgba(3, 6, 16, 0.28) 100%),
     linear-gradient(180deg, rgba(3, 6, 16, 0.08), rgba(3, 6, 16, 0.74));
@@ -261,7 +284,7 @@ button {
 
 .hero-content {
   position: relative;
-  z-index: 1;
+  z-index: 3;
   display: grid;
   align-content: center;
   width: min(820px, 100%);
@@ -473,23 +496,6 @@ button {
   text-align: right;
 }
 
-.floating-card {
-  position: relative;
-  width: min(100%, 420px);
-  min-width: 0;
-  overflow: hidden;
-  border: 1px solid rgba(117, 171, 255, 0.23);
-  border-radius: var(--radius-md);
-  background:
-    linear-gradient(180deg, rgba(16, 31, 53, 0.9), rgba(8, 17, 31, 0.84));
-  box-shadow: var(--shadow-md), var(--shadow-blue);
-  -webkit-backdrop-filter: blur(18px);
-  backdrop-filter: blur(18px);
-  transform: translate3d(0, 0, 0);
-  animation: cardFloat 8s ease-in-out infinite;
-}
-
-.floating-card::before,
 .service-card::before,
 .portfolio-card::before,
 .process-card::before {
@@ -506,55 +512,6 @@ button {
   content: "";
 }
 
-.floating-card::before {
-  opacity: 0.72;
-  animation: borderSweep 7s ease-in-out infinite;
-}
-
-.hero-dashboard-card {
-  justify-self: start;
-  padding: 14px;
-}
-
-.hero-crm-card {
-  justify-self: end;
-  width: min(100%, 340px);
-  padding: 13px;
-  animation-delay: -2s;
-}
-
-.hero-chat-card {
-  justify-self: center;
-  width: min(100%, 360px);
-  padding: 13px;
-  animation-delay: -4s;
-}
-
-.scene-topline {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  gap: 8px;
-  min-width: 0;
-  color: var(--color-muted);
-  font-size: 0.74rem;
-}
-
-.scene-topline strong,
-.scene-topline em {
-  overflow-wrap: anywhere;
-}
-
-.scene-topline strong {
-  color: var(--color-text);
-}
-
-.scene-topline em {
-  color: var(--color-cyan);
-  font-style: normal;
-  font-weight: 850;
-}
-
 .status-dot {
   display: inline-block;
   width: 9px;
@@ -565,14 +522,6 @@ button {
   animation: statusPulse 1.8s ease-in-out infinite;
 }
 
-.scene-kpis {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 8px;
-  margin-top: 14px;
-}
-
-.scene-kpis span,
 .dashboard-mockup span {
   display: grid;
   gap: 4px;
@@ -584,100 +533,18 @@ button {
   background: rgba(255, 255, 255, 0.04);
 }
 
-.scene-kpis strong,
 .dashboard-mockup strong {
   color: var(--color-text);
   font-size: 1.24rem;
   line-height: 1;
 }
 
-.scene-kpis em,
 .dashboard-mockup em {
   color: var(--color-muted);
   font-size: 0.68rem;
   font-style: normal;
 }
 
-.scene-bars {
-  display: flex;
-  align-items: end;
-  gap: 8px;
-  height: 118px;
-  margin-top: 14px;
-  padding-top: 12px;
-  border-bottom: 1px solid rgba(117, 171, 255, 0.18);
-}
-
-.scene-bars span {
-  display: block;
-  width: 100%;
-  min-height: 18px;
-  border-radius: var(--radius-xs) var(--radius-xs) 0 0;
-  background: linear-gradient(180deg, var(--color-cyan), var(--color-blue));
-  box-shadow: var(--shadow-blue);
-  transform-origin: bottom;
-  animation: progressRise 780ms ease both, barBreathe 4s ease-in-out 780ms infinite alternate;
-}
-
-.scene-bars span:nth-child(2) {
-  animation-delay: 80ms, 860ms;
-}
-
-.scene-bars span:nth-child(3) {
-  animation-delay: 160ms, 940ms;
-}
-
-.scene-bars span:nth-child(4) {
-  animation-delay: 240ms, 1020ms;
-}
-
-.scene-bars span:nth-child(5) {
-  animation-delay: 320ms, 1100ms;
-}
-
-.scene-workflow {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 6px;
-  margin-top: 12px;
-}
-
-.scene-workflow span {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  min-width: 0;
-  min-height: 30px;
-  padding: 6px;
-  border: 1px solid rgba(117, 171, 255, 0.16);
-  border-radius: var(--radius-sm);
-  color: var(--color-muted);
-  background: rgba(255, 255, 255, 0.035);
-  font-size: 0.68rem;
-  font-weight: 800;
-  text-align: center;
-}
-
-.scene-workflow i {
-  display: inline-block;
-  width: 7px;
-  height: 7px;
-  flex: 0 0 7px;
-  border-radius: 50%;
-  background: var(--color-green);
-  box-shadow: 0 0 14px rgba(34, 197, 94, 0.55);
-  animation: statusPulse 1.8s ease-in-out infinite;
-}
-
-.pipeline-preview {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 8px;
-  margin-top: 12px;
-}
-
-.pipeline-preview span,
 .crm-mockup span,
 .automation-mockup span,
 .system-mockup span {
@@ -695,14 +562,12 @@ button {
   text-align: center;
 }
 
-.mini-chat,
 .assistant-mockup {
   display: grid;
   gap: 8px;
   margin-top: 12px;
 }
 
-.mini-chat p,
 .assistant-mockup p {
   width: fit-content;
   max-width: 92%;
@@ -716,7 +581,6 @@ button {
   line-height: 1.35;
 }
 
-.mini-chat p:last-child,
 .assistant-mockup p:last-child {
   justify-self: end;
   border-color: rgba(139, 92, 246, 0.28);
@@ -978,8 +842,7 @@ h1 {
 
 .service-card > *,
 .portfolio-card > *,
-.process-card > *,
-.floating-card > * {
+.process-card > * {
   position: relative;
   z-index: 1;
 }
@@ -1555,6 +1418,18 @@ h1 {
   }
 }
 
+@keyframes heroMeshDrift {
+  0% {
+    opacity: 0.5;
+    transform: translate3d(-1.5%, 0, 0) skewY(-1deg);
+  }
+
+  100% {
+    opacity: 0.72;
+    transform: translate3d(1.5%, -3px, 0) skewY(1deg);
+  }
+}
+
 @keyframes cardFloat {
   0%,
   100% {
@@ -1793,9 +1668,6 @@ h1 {
     padding: 0 18px 18px;
   }
 
-  .scene-kpis,
-  .scene-workflow,
-  .pipeline-preview,
   .dashboard-mockup,
   .automation-mockup,
   .crm-mockup {
