@@ -53,21 +53,56 @@
           <em>Demo / Sample Data</em>
         </div>
         <div class="preview-kpis">
-          <span><strong>24</strong><em>Workflows</em></span>
-          <span><strong>08</strong><em>Tasks</em></span>
-          <span><strong>16</strong><em>Follow-ups</em></span>
+          <div class="preview-kpi">
+            <span>Total Workflows</span>
+            <strong>24</strong>
+            <svg class="preview-sparkline" viewBox="0 0 96 30" aria-hidden="true" focusable="false">
+              <path d="M4 22 L20 16 L36 18 L52 11 L70 14 L92 7"></path>
+            </svg>
+          </div>
+          <div class="preview-kpi">
+            <span>Active Tasks</span>
+            <strong>08</strong>
+            <svg class="preview-sparkline" viewBox="0 0 96 30" aria-hidden="true" focusable="false">
+              <path d="M4 18 L18 20 L34 13 L52 15 L72 9 L92 12"></path>
+            </svg>
+          </div>
+          <div class="preview-kpi">
+            <span>Review Items</span>
+            <strong>16</strong>
+            <svg class="preview-sparkline" viewBox="0 0 96 30" aria-hidden="true" focusable="false">
+              <path d="M4 24 L22 21 L38 15 L55 18 L72 10 L92 8"></path>
+            </svg>
+          </div>
         </div>
-        <div class="preview-chart" aria-hidden="true">
-          <span style="height: 48%"></span>
-          <span style="height: 72%"></span>
-          <span style="height: 58%"></span>
-          <span style="height: 86%"></span>
-          <span style="height: 66%"></span>
-          <span style="height: 78%"></span>
+        <div class="preview-chart">
+          <div class="preview-chart-top">
+            <strong>Workflow Overview</strong>
+            <em>Sample activity</em>
+          </div>
+          <div class="preview-chart-body" aria-hidden="true">
+            <div class="preview-chart-bars">
+              <span class="preview-bar" style="--bar-height: 44%"></span>
+              <span class="preview-bar" style="--bar-height: 66%"></span>
+              <span class="preview-bar" style="--bar-height: 54%"></span>
+              <span class="preview-bar" style="--bar-height: 82%"></span>
+              <span class="preview-bar" style="--bar-height: 61%"></span>
+              <span class="preview-bar" style="--bar-height: 74%"></span>
+            </div>
+            <svg class="preview-chart-line" viewBox="0 0 300 118" preserveAspectRatio="none">
+              <path d="M8 86 C42 72, 54 64, 82 70 S126 46, 158 53 S210 28, 238 43 S270 35, 292 24"></path>
+            </svg>
+          </div>
         </div>
-        <div class="preview-labels">
-          <span>Automation Queue</span>
-          <span>CRM Pipeline</span>
+        <div class="preview-summary-grid">
+          <div class="preview-summary-card">
+            <span>Automation Queue</span>
+            <strong>08 tasks</strong>
+          </div>
+          <div class="preview-summary-card">
+            <span>CRM Pipeline</span>
+            <strong>16 active deals</strong>
+          </div>
         </div>
         <div class="preview-ai-row">
           <div class="preview-ai-copy">
@@ -227,7 +262,7 @@
 
   function initRevealOnScroll() {
     const revealItems = document.querySelectorAll(
-      ".page-section, .service-card, .portfolio-card, .process-card, .about-card, .systems-panel"
+      ".hero-support, .business-strip, .value-card, .page-section, .service-card, .portfolio-card, .process-card, .about-card, .systems-panel, .footer-intake-card"
     );
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -280,23 +315,23 @@
       context.fillStyle = gradient;
       context.fillRect(0, 0, width, height);
 
-      context.strokeStyle = "rgba(117, 171, 255, 0.055)";
-      context.lineWidth = 1;
-      for (let x = 0; x < width; x += 44) {
+      context.strokeStyle = "rgba(117, 171, 255, 0.018)";
+      context.lineWidth = 0.6;
+      for (let x = 0; x < width; x += 52) {
         context.beginPath();
         context.moveTo(x, 0);
         context.lineTo(x, height);
         context.stroke();
       }
-      for (let y = 0; y < height; y += 44) {
+      for (let y = 0; y < height; y += 52) {
         context.beginPath();
         context.moveTo(0, y);
         context.lineTo(width, y);
         context.stroke();
       }
 
-      context.strokeStyle = "rgba(49, 215, 255, 0.09)";
-      context.lineWidth = 1;
+      context.strokeStyle = "rgba(49, 215, 255, 0.045)";
+      context.lineWidth = 0.7;
       for (let row = 0; row < 4; row += 1) {
         context.beginPath();
         const baseY = height * 0.78 + row * 20;
@@ -315,10 +350,10 @@
       for (let index = 0; index < particleCount; index += 1) {
         const x = (index * 97) % Math.max(width, 1);
         const y = ((index * 53) % Math.max(height * 0.72, 1)) + height * 0.08;
-        const alpha = 0.1 + (index % 5) * 0.012;
+        const alpha = 0.045 + (index % 5) * 0.006;
         context.fillStyle = `rgba(49, 215, 255, ${alpha})`;
         context.beginPath();
-        context.arc(x, y, 1.4, 0, Math.PI * 2);
+        context.arc(x, y, 1.05, 0, Math.PI * 2);
         context.fill();
       }
     }
