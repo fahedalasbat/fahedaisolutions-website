@@ -44,54 +44,34 @@
 
   function renderHeroScene() {
     getElement("heroProductScene").innerHTML = `
-      <article class="floating-card hero-dashboard-card">
-        <div class="scene-topline">
-          <span class="status-dot"></span>
-          <strong>Operations Dashboard</strong>
-          <em>Sample</em>
+      <article class="hero-preview-panel">
+        <div class="preview-shell-top">
+          <div>
+            <span class="status-dot"></span>
+            <strong>Operations Dashboard</strong>
+          </div>
+          <em>Demo / Sample Data</em>
         </div>
-        <div class="scene-kpis">
+        <div class="preview-kpis">
           <span><strong>24</strong><em>Workflows</em></span>
-          <span><strong>08</strong><em>Queue</em></span>
+          <span><strong>08</strong><em>Tasks</em></span>
           <span><strong>16</strong><em>Follow-ups</em></span>
         </div>
-        <div class="scene-bars" aria-hidden="true">
+        <div class="preview-chart" aria-hidden="true">
+          <span style="height: 48%"></span>
+          <span style="height: 72%"></span>
           <span style="height: 58%"></span>
-          <span style="height: 82%"></span>
-          <span style="height: 46%"></span>
-          <span style="height: 74%"></span>
-          <span style="height: 64%"></span>
+          <span style="height: 86%"></span>
+          <span style="height: 66%"></span>
+          <span style="height: 78%"></span>
         </div>
-        <div class="scene-workflow" aria-hidden="true">
-          <span><i></i> Intake</span>
-          <span><i></i> Route</span>
-          <span><i></i> Review</span>
-          <span><i></i> Ready</span>
+        <div class="preview-labels">
+          <span>Automation Queue</span>
+          <span>CRM Pipeline</span>
         </div>
-      </article>
-
-      <article class="floating-card hero-crm-card">
-        <div class="scene-topline">
-          <span class="status-dot"></span>
-          <strong>CRM Pipeline</strong>
-          <em>Demo</em>
-        </div>
-        <div class="pipeline-preview">
-          <span>New</span>
-          <span>Discovery</span>
-          <span>Proposal</span>
-        </div>
-      </article>
-
-      <article class="floating-card hero-chat-card">
-        <div class="scene-topline">
-          <span class="status-dot"></span>
+        <div class="preview-ai-row">
           <strong>AI Assistant</strong>
-          <em>Review</em>
-        </div>
-        <div class="mini-chat">
-          <p>Sample request received.</p>
-          <p>Draft response ready for human review.</p>
+          <span>Draft ready for review</span>
         </div>
       </article>
     `;
@@ -270,33 +250,6 @@
       }
     }
 
-    function roundedRect(x, y, width, height, radius) {
-      context.beginPath();
-      context.moveTo(x + radius, y);
-      context.lineTo(x + width - radius, y);
-      context.quadraticCurveTo(x + width, y, x + width, y + radius);
-      context.lineTo(x + width, y + height - radius);
-      context.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
-      context.lineTo(x + radius, y + height);
-      context.quadraticCurveTo(x, y + height, x, y + height - radius);
-      context.lineTo(x, y + radius);
-      context.quadraticCurveTo(x, y, x + radius, y);
-      context.closePath();
-    }
-
-    function drawPanel(x, y, width, height, title, accent) {
-      roundedRect(x, y, width, height, 8);
-      context.fillStyle = "rgba(8, 17, 31, 0.82)";
-      context.fill();
-      context.strokeStyle = "rgba(117, 171, 255, 0.24)";
-      context.lineWidth = 1;
-      context.stroke();
-
-      context.fillStyle = accent;
-      context.font = "700 11px Inter, system-ui, sans-serif";
-      context.fillText(title, x + 16, y + 26);
-    }
-
     function draw(time) {
       const width = canvas.clientWidth;
       const height = canvas.clientHeight;
@@ -314,55 +267,48 @@
       context.fillStyle = gradient;
       context.fillRect(0, 0, width, height);
 
-      context.strokeStyle = "rgba(117, 171, 255, 0.07)";
+      const gridOffset = reduceMotion ? 0 : (phase * 10) % 44;
+      context.strokeStyle = "rgba(117, 171, 255, 0.055)";
       context.lineWidth = 1;
-      for (let x = 0; x < width; x += 44) {
+      for (let x = -44 + gridOffset; x < width; x += 44) {
         context.beginPath();
         context.moveTo(x, 0);
         context.lineTo(x, height);
         context.stroke();
       }
-      for (let y = 0; y < height; y += 44) {
+      for (let y = -44 + gridOffset; y < height; y += 44) {
         context.beginPath();
         context.moveTo(0, y);
         context.lineTo(width, y);
         context.stroke();
       }
 
-      const offset = Math.sin(phase) * 8;
-      const baseX = Math.max(300, width * 0.46);
-      drawPanel(baseX, 92 + offset, Math.min(520, width * 0.42), 250, "OPERATIONS DASHBOARD", "#31d7ff");
-      drawPanel(baseX + 34, 372 - offset, Math.min(430, width * 0.34), 152, "CRM PIPELINE", "#00a3ff");
-      drawPanel(Math.max(24, width * 0.13), 340 + offset * 0.45, Math.min(360, width * 0.28), 150, "AUTOMATION QUEUE", "#22c55e");
-
-      const chartX = baseX + 28;
-      const chartY = 155 + offset;
-      const barWidth = 34;
-      const values = [72, 108, 58, 132, 94, 118];
-      values.forEach((value, index) => {
-        const x = chartX + index * 52;
-        const y = chartY + 132 - value;
-        const barGradient = context.createLinearGradient(x, y, x, chartY + 132);
-        barGradient.addColorStop(0, "#31d7ff");
-        barGradient.addColorStop(1, "#00a3ff");
-        roundedRect(x, y, barWidth, value, 5);
-        context.fillStyle = barGradient;
-        context.fill();
-      });
-
-      const pills = ["Dashboard", "Automation", "CRM", "AI Assistant"];
-      pills.forEach((pill, index) => {
-        const x = baseX + 28 + index * 112;
-        const y = 292 + offset;
-        roundedRect(x, y, 96, 28, 6);
-        context.fillStyle = "rgba(0, 163, 255, 0.12)";
-        context.fill();
-        context.strokeStyle = "rgba(49, 215, 255, 0.22)";
+      context.strokeStyle = "rgba(49, 215, 255, 0.12)";
+      context.lineWidth = 1;
+      for (let row = 0; row < 4; row += 1) {
+        context.beginPath();
+        const baseY = height * 0.78 + row * 20;
+        for (let x = 0; x <= width; x += 24) {
+          const y = baseY + Math.sin((x * 0.012) + phase + row * 0.9) * (8 + row * 2);
+          if (x === 0) {
+            context.moveTo(x, y);
+          } else {
+            context.lineTo(x, y);
+          }
+        }
         context.stroke();
-        context.fillStyle = "#dff8ff";
-        context.font = "700 10px Inter, system-ui, sans-serif";
-        context.fillText(pill, x + 10, y + 18);
-      });
+      }
+
+      const particleCount = width < 720 ? 14 : 24;
+      for (let index = 0; index < particleCount; index += 1) {
+        const x = ((index * 97) + (phase * 12)) % Math.max(width, 1);
+        const y = ((index * 53) % Math.max(height * 0.72, 1)) + height * 0.08;
+        const alpha = 0.12 + Math.sin(phase + index) * 0.05;
+        context.fillStyle = `rgba(49, 215, 255, ${alpha})`;
+        context.beginPath();
+        context.arc(x, y, 1.4, 0, Math.PI * 2);
+        context.fill();
+      }
 
       if (!reduceMotion) {
         animationFrame = window.requestAnimationFrame(draw);
