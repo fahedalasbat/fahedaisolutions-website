@@ -336,8 +336,8 @@ h2 {
 
 .sales-chart {
   position: relative;
-  height: 178px;
-  padding: 10px 10px 8px;
+  height: 188px;
+  padding: 12px 12px 10px;
   border: 1px solid rgba(96, 165, 250, 0.08);
   border-radius: 8px;
   background:
@@ -349,41 +349,92 @@ h2 {
 
 .sales-chart-frame {
   display: grid;
-  grid-template-rows: minmax(0, 1fr) auto;
-  gap: 6px;
+  grid-template-columns: 42px minmax(0, 1fr);
+  gap: 10px;
   height: 100%;
 }
 
-.sales-chart-svg {
-  display: block;
+.sales-y-axis {
+  position: relative;
+  min-width: 0;
+  margin-bottom: 34px;
+}
+
+.chart-y-label {
+  position: absolute;
+  right: 0;
+  color: var(--faint);
+  font-size: 0.62rem;
+  font-weight: 650;
+  line-height: 1;
+  transform: translateY(-50%);
+}
+
+.sales-chart-columns {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+  min-width: 0;
+}
+
+.sales-plot-layer {
+  position: absolute;
+  inset: 0 0 34px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.chart-grid-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(96, 165, 250, 0.12);
+  transform: translateY(-50%);
+}
+
+.sales-trend-svg {
+  position: absolute;
+  inset: 0;
   width: 100%;
-  height: 132px;
+  height: 100%;
   overflow: visible;
 }
 
-.chart-guide text {
-  fill: var(--faint);
-  font-size: 10px;
-  font-weight: 650;
+.sales-week-group {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) 14px 13px;
+  gap: 3px;
+  min-width: 0;
+  justify-items: center;
 }
 
-.chart-guide line {
-  stroke: rgba(96, 165, 250, 0.12);
-  stroke-width: 1;
-  vector-effect: non-scaling-stroke;
+.sales-bar-track {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 100%;
+  min-height: 0;
 }
 
 .sales-bar {
-  fill: url(#salesBarGradient);
-  filter: drop-shadow(0 0 5px rgba(47, 140, 255, 0.18));
+  display: block;
+  width: clamp(18px, 18%, 24px);
+  height: var(--bar-height);
+  min-height: 12px;
+  border-radius: 7px 7px 2px 2px;
+  background: linear-gradient(180deg, var(--cyan), var(--blue));
+  box-shadow: 0 0 10px rgba(47, 140, 255, 0.2);
   opacity: 0.88;
-  transform-box: fill-box;
   transform-origin: center bottom;
 }
 
 .trend-line {
   fill: none;
-  stroke: url(#salesTrendGradient);
+  stroke: rgba(82, 182, 255, 0.58);
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-width: 1.6;
@@ -394,41 +445,25 @@ h2 {
   fill: rgba(194, 243, 255, 0.82);
   stroke: rgba(55, 213, 255, 0.32);
   stroke-width: 1;
-  transform-box: fill-box;
-  transform-origin: center;
 }
 
-.chart-x-axis {
-  position: relative;
-  height: 30px;
-}
-
-.chart-x-item {
-  display: grid;
-  gap: 2px;
-  position: absolute;
-  top: 0;
-  width: 58px;
-  min-width: 0;
-  color: var(--muted);
-  text-align: center;
-  transform: translateX(-50%);
-}
-
-.chart-x-item strong,
-.chart-x-item em {
+.chart-x-value,
+.chart-x-label {
+  max-width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  text-align: center;
+  line-height: 1;
 }
 
-.chart-x-item strong {
+.chart-x-value {
   color: rgba(237, 245, 255, 0.86);
   font-size: 0.66rem;
   font-weight: 680;
 }
 
-.chart-x-item em {
+.chart-x-label {
   color: var(--faint);
   font-size: 0.62rem;
   font-style: normal;
@@ -784,20 +819,29 @@ body.capture-mode .sales-chart {
   padding: 8px 8px 6px;
 }
 
-body.capture-mode .sales-chart-svg {
-  height: 106px;
+body.capture-mode .sales-chart-frame {
+  grid-template-columns: 36px minmax(0, 1fr);
+  gap: 8px;
 }
 
-body.capture-mode .chart-x-axis {
-  height: 28px;
+body.capture-mode .sales-y-axis {
+  margin-bottom: 30px;
 }
 
-body.capture-mode .chart-guide text {
-  font-size: 9px;
+body.capture-mode .sales-plot-layer {
+  bottom: 30px;
 }
 
-body.capture-mode .chart-x-item strong,
-body.capture-mode .chart-x-item em,
+body.capture-mode .sales-chart-columns {
+  gap: 8px;
+}
+
+body.capture-mode .chart-y-label {
+  font-size: 0.56rem;
+}
+
+body.capture-mode .chart-x-value,
+body.capture-mode .chart-x-label,
 body.capture-mode .source-topline,
 body.capture-mode .status-row {
   font-size: 0.68rem;
@@ -913,12 +957,12 @@ body.capture-mode .footer {
     height: 220px;
   }
 
-  .sales-chart-svg {
-    height: 162px;
+  .sales-chart-columns {
+    gap: 10px;
   }
 
-  .chart-x-item strong,
-  .chart-x-item em {
+  .chart-x-value,
+  .chart-x-label {
     font-size: 0.68rem;
   }
 
@@ -1092,28 +1136,37 @@ body.capture-mode .footer {
     padding-bottom: 6px;
   }
 
-  .sales-chart-svg {
-    height: 132px;
+  .sales-chart-frame {
+    grid-template-columns: 34px minmax(0, 1fr);
+    gap: 6px;
   }
 
-  .chart-x-axis {
-    height: 30px;
+  .sales-y-axis {
+    margin-bottom: 32px;
   }
 
-  .chart-guide text {
-    font-size: 9px;
+  .sales-plot-layer {
+    bottom: 32px;
   }
 
-  .chart-x-item strong {
+  .sales-chart-columns {
+    gap: 5px;
+  }
+
+  .chart-y-label {
+    font-size: 0.54rem;
+  }
+
+  .sales-bar {
+    width: clamp(13px, 22%, 18px);
+  }
+
+  .chart-x-value {
     font-size: 0.58rem;
   }
 
-  .chart-x-item em {
+  .chart-x-label {
     font-size: 0.56rem;
-  }
-
-  .chart-x-item {
-    width: 50px;
   }
 
   .task-item,
@@ -1233,6 +1286,7 @@ body::before {
 
 .sales-bar {
   animation: salesBarRise 780ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: var(--bar-delay);
 }
 
 .trend-line {

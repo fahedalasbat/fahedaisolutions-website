@@ -53,56 +53,28 @@
   function renderSalesChart() {
     const chart = getElement("salesChart");
     const maxValue = 6000;
-    const plot = {
-      left: 58,
-      right: 586,
-      top: 16,
-      bottom: 134
-    };
-    const chartHeight = plot.bottom - plot.top;
-    const barWidth = 18;
     const guideValues = [6000, 4000, 2000, 0];
-    const step = (plot.right - plot.left) / (data.salesByWeek.length - 1);
+    const columnCount = data.salesByWeek.length;
+    const getTop = (value) => 100 - ((value / maxValue) * 100);
 
-    const getY = (value) => plot.bottom - ((value / maxValue) * chartHeight);
-
-    const gridLines = guideValues.map((value) => {
-      const y = getY(value);
+    const yAxis = guideValues.map((value) => {
+      const top = getTop(value);
       const label = value === 0 ? "$0" : "$" + (value / 1000) + "k";
 
-      return `
-        <g class="chart-guide">
-          <text x="18" y="${y + 4}">${label}</text>
-          <line x1="${plot.left}" y1="${y}" x2="${plot.right + 4}" y2="${y}"></line>
-        </g>
-      `;
+      return `<span class="chart-y-label" style="top: ${top}%">${label}</span>`;
+    }).join("");
+
+    const gridLines = guideValues.map((value) => {
+      const top = getTop(value);
+
+      return `<span class="chart-grid-line" style="top: ${top}%"></span>`;
     }).join("");
 
     const points = data.salesByWeek.map((item, index) => {
-      const x = plot.left + (index * step);
-      const y = getY(item.value);
+      const x = ((index + 0.5) / columnCount) * 100;
+      const y = getTop(item.value);
       return { x, y, item };
     });
-
-    const bars = points.map((point, index) => {
-      const barHeight = Math.max(10, plot.bottom - point.y);
-      const x = point.x - (barWidth / 2);
-      const formattedValue = formatCurrency(point.item.value);
-
-      return `
-        <rect
-          class="sales-bar"
-          x="${x}"
-          y="${point.y}"
-          width="${barWidth}"
-          height="${barHeight}"
-          rx="6"
-          style="animation-delay: ${index * 70}ms"
-        >
-          <title>${escapeHTML(point.item.label)}: ${escapeHTML(formattedValue)}</title>
-        </rect>
-      `;
-    }).join("");
 
     const path = points.map((point, index) => {
       return `${index === 0 ? "M" : "L"} ${point.x} ${point.y}`;
@@ -112,38 +84,38 @@
       return `<circle class="trend-dot" cx="${point.x}" cy="${point.y}" r="2.2"></circle>`;
     }).join("");
 
-    const xAxis = points.map((point) => {
+    const columns = points.map((point, index) => {
+      const barHeight = Math.max(10, Math.round((point.item.value / maxValue) * 100));
       const formattedValue = formatCurrency(point.item.value);
-      const xPosition = (point.x / 640) * 100;
 
       return `
-        <span class="chart-x-item" style="left: ${xPosition}%">
-          <strong>${escapeHTML(formattedValue)}</strong>
-          <em>${escapeHTML(point.item.label)}</em>
-        </span>
+        <div
+          class="sales-week-group"
+          style="--bar-height: ${barHeight}%; --bar-delay: ${index * 70}ms"
+          aria-label="${escapeHTML(point.item.label)}: ${escapeHTML(formattedValue)}"
+        >
+          <div class="sales-bar-track">
+            <span class="sales-bar" title="${escapeHTML(point.item.label)}: ${escapeHTML(formattedValue)}"></span>
+          </div>
+          <strong class="chart-x-value">${escapeHTML(formattedValue)}</strong>
+          <em class="chart-x-label">${escapeHTML(point.item.label)}</em>
+        </div>
       `;
     }).join("");
 
     chart.innerHTML = `
       <div class="sales-chart-frame">
-        <svg class="sales-chart-svg" viewBox="0 0 640 152" role="img" aria-label="Sales by Week sample values from Week 1 to Week 5">
-          <defs>
-            <linearGradient id="salesBarGradient" x1="0" x2="0" y1="0" y2="1">
-              <stop offset="0%" stop-color="#37d5ff"></stop>
-              <stop offset="100%" stop-color="#2f8cff"></stop>
-            </linearGradient>
-            <linearGradient id="salesTrendGradient" x1="0" x2="1" y1="0" y2="0">
-              <stop offset="0%" stop-color="#52b6ff" stop-opacity="0.32"></stop>
-              <stop offset="54%" stop-color="#37d5ff" stop-opacity="0.68"></stop>
-              <stop offset="100%" stop-color="#52b6ff" stop-opacity="0.3"></stop>
-            </linearGradient>
-          </defs>
-          <g class="chart-guides" aria-hidden="true">${gridLines}</g>
-          <g class="chart-bars">${bars}</g>
-          <path class="trend-line" pathLength="1" d="${path}"></path>
-          <g class="trend-markers" aria-hidden="true">${markers}</g>
-        </svg>
-        <div class="chart-x-axis">${xAxis}</div>
+        <div class="sales-y-axis" aria-hidden="true">${yAxis}</div>
+        <div class="sales-chart-columns" role="img" aria-label="Sales by Week sample values from Week 1 to Week 5">
+          <div class="sales-plot-layer" aria-hidden="true">
+            ${gridLines}
+            <svg class="sales-trend-svg" viewBox="0 0 100 100" preserveAspectRatio="none" focusable="false">
+              <path class="trend-line" pathLength="1" d="${path}"></path>
+              <g class="trend-markers">${markers}</g>
+            </svg>
+          </div>
+          ${columns}
+        </div>
       </div>
     `;
   }
