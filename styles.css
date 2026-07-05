@@ -2385,6 +2385,15 @@ h1 {
     grid-template-columns: 1fr;
   }
 
+  .service-card::after {
+    display: none;
+  }
+
+  .portfolio-card {
+    min-height: auto;
+    padding: 14px;
+  }
+
   .process-grid::before,
   .process-grid::after {
     display: none;
@@ -2557,6 +2566,10 @@ h1 {
   .contact-card,
   .contact-cta-card {
     padding: 14px;
+  }
+
+  .portfolio-card {
+    gap: 10px;
   }
 }
 

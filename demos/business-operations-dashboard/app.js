@@ -55,7 +55,7 @@
     const maxValue = 6000;
     const plot = {
       left: 58,
-      right: 610,
+      right: 586,
       top: 16,
       bottom: 134
     };
@@ -112,13 +112,14 @@
       return `<circle class="trend-dot" cx="${point.x}" cy="${point.y}" r="2.2"></circle>`;
     }).join("");
 
-    const xAxis = data.salesByWeek.map((item) => {
-      const formattedValue = formatCurrency(item.value);
+    const xAxis = points.map((point) => {
+      const formattedValue = formatCurrency(point.item.value);
+      const xPosition = (point.x / 640) * 100;
 
       return `
-        <span class="chart-x-item">
+        <span class="chart-x-item" style="left: ${xPosition}%">
           <strong>${escapeHTML(formattedValue)}</strong>
-          <em>${escapeHTML(item.label)}</em>
+          <em>${escapeHTML(point.item.label)}</em>
         </span>
       `;
     }).join("");
