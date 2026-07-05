@@ -537,7 +537,8 @@ h2 {
 
 .queue-item,
 .owner-action {
-  grid-template-columns: 78px 1fr;
+  grid-template-columns: max-content minmax(0, 1fr);
+  column-gap: 14px;
 }
 
 .activity-item {
@@ -557,6 +558,16 @@ h2 {
   color: var(--text);
   font-size: 0.72rem;
   line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+.queue-item > div,
+.owner-action > div {
+  min-width: 0;
+}
+
+.queue-state {
+  align-self: start;
 }
 
 .queue-item p,

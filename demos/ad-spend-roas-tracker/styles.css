@@ -593,6 +593,13 @@ tbody tr:hover td {
   background: rgba(7, 18, 34, 0.44);
 }
 
+.budget-grid div {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
 dt,
 .budget-grid span,
 .budget-main span {
@@ -602,12 +609,31 @@ dt,
   text-transform: uppercase;
 }
 
+.budget-grid span {
+  flex: 0 0 auto;
+  font-size: 0.66rem;
+  text-transform: none;
+}
+
+.budget-grid span::after {
+  content: ":";
+}
+
 dd,
 .budget-grid strong {
-  margin-top: 3px;
   color: var(--muted);
   font-size: 0.72rem;
   font-weight: 780;
+}
+
+dd {
+  margin-top: 3px;
+}
+
+.budget-grid strong {
+  margin-top: 0;
+  text-align: right;
+  overflow-wrap: anywhere;
 }
 
 .budget-card {
@@ -1213,6 +1239,16 @@ html.capture-mode body *::after {
     align-items: flex-start;
     flex-direction: column;
     gap: 4px;
+  }
+
+  .budget-grid div {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .budget-grid strong {
+    text-align: left;
   }
 
   .action-item,
