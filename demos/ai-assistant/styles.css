@@ -917,8 +917,13 @@ body.capture-mode .footer {
 }
 
 @media (max-width: 767px) {
+  body {
+    overflow-x: hidden;
+  }
+
   .assistant-shell {
     padding: 12px;
+    overflow-x: hidden;
   }
 
   .hero-grid {
@@ -991,11 +996,32 @@ body.capture-mode .footer {
   }
 
   .chat-panel {
-    min-height: 300px;
+    height: min(430px, 72vh);
+    min-height: 330px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding-right: 2px;
+  }
+
+  .chat-message {
+    width: 100%;
   }
 
   .hero-typing-preview {
     width: 100%;
+  }
+
+  .topbar,
+  .topbar-right,
+  .brand-block,
+  .mini-cta,
+  .contact-line {
+    max-width: 100%;
+  }
+
+  .contact-line span,
+  .mini-cta strong {
+    overflow-wrap: anywhere;
   }
 }
 
@@ -1017,6 +1043,26 @@ body.capture-mode .footer {
   .action-item,
   .review-item {
     grid-template-columns: 1fr;
+  }
+
+  .source-topline,
+  .activity-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .activity-item {
+    grid-template-columns: 1fr;
+  }
+
+  .activity-time {
+    width: fit-content;
+  }
+
+  .chat-panel {
+    height: 360px;
+    min-height: 320px;
   }
 }
 

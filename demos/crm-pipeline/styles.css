@@ -865,8 +865,13 @@ body.capture-mode .footer {
 }
 
 @media (max-width: 767px) {
+  body {
+    overflow-x: hidden;
+  }
+
   .crm-shell {
     padding: 12px;
+    overflow-x: hidden;
   }
 
   .hero-grid {
@@ -926,12 +931,31 @@ body.capture-mode .footer {
   .pipeline-column {
     min-height: auto;
     padding: 12px;
+    width: 100%;
   }
 
   .panel-header {
     align-items: flex-start;
     flex-direction: column;
     gap: 8px;
+  }
+
+  .pipeline-board,
+  .crm-grid {
+    gap: 10px;
+  }
+
+  .topbar,
+  .topbar-right,
+  .brand-block,
+  .mini-cta,
+  .contact-line {
+    max-width: 100%;
+  }
+
+  .contact-line span,
+  .mini-cta strong {
+    overflow-wrap: anywhere;
   }
 }
 
@@ -957,6 +981,23 @@ body.capture-mode .footer {
 
   .follow-up-side {
     align-items: flex-start;
+  }
+
+  .lead-card-top,
+  .lead-meta,
+  .source-topline,
+  .activity-heading {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .activity-item {
+    grid-template-columns: 1fr;
+  }
+
+  .activity-time {
+    width: fit-content;
   }
 }
 

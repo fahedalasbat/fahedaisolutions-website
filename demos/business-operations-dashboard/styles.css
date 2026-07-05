@@ -879,8 +879,13 @@ body.capture-mode .footer {
 }
 
 @media (max-width: 767px) {
+  body {
+    overflow-x: hidden;
+  }
+
   .dashboard-shell {
     padding: 12px;
+    overflow-x: hidden;
   }
 
   .dashboard-intro {
@@ -947,8 +952,83 @@ body.capture-mode .footer {
     gap: 8px;
   }
 
+  .topbar,
+  .topbar-right,
+  .brand-block,
+  .mini-cta,
+  .contact-line {
+    max-width: 100%;
+  }
+
+  .contact-line span,
+  .mini-cta strong {
+    overflow-wrap: anywhere;
+  }
+
   .table-wrap {
-    overflow-x: auto;
+    overflow-x: visible;
+  }
+
+  .table-wrap table,
+  .table-wrap thead,
+  .table-wrap tbody,
+  .table-wrap tr,
+  .table-wrap td {
+    display: block;
+    width: 100%;
+  }
+
+  .table-wrap thead {
+    display: none;
+  }
+
+  .table-wrap tr {
+    margin-bottom: 8px;
+    padding: 9px;
+    border: 1px solid rgba(96, 165, 250, 0.1);
+    border-radius: 8px;
+    background: rgba(4, 10, 20, 0.32);
+  }
+
+  .table-wrap td {
+    display: grid;
+    grid-template-columns: minmax(74px, 0.36fr) minmax(0, 1fr);
+    gap: 8px;
+    align-items: center;
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(96, 165, 250, 0.08);
+    white-space: normal;
+  }
+
+  .table-wrap td:last-child {
+    border-bottom: 0;
+  }
+
+  .table-wrap td::before {
+    color: var(--faint);
+    font-size: 0.62rem;
+    font-weight: 750;
+    text-transform: uppercase;
+  }
+
+  .table-wrap td:nth-child(1)::before {
+    content: "SKU";
+  }
+
+  .table-wrap td:nth-child(2)::before {
+    content: "Item";
+  }
+
+  .table-wrap td:nth-child(3)::before {
+    content: "Current";
+  }
+
+  .table-wrap td:nth-child(4)::before {
+    content: "Threshold";
+  }
+
+  .table-wrap td:nth-child(5)::before {
+    content: "Status";
   }
 }
 
@@ -982,6 +1062,24 @@ body.capture-mode .footer {
 
   .chart-x-item em {
     font-size: 0.56rem;
+  }
+
+  .task-item,
+  .task-item.priority-high {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .priority {
+    justify-self: flex-start;
+  }
+
+  .activity-item {
+    grid-template-columns: 1fr;
+  }
+
+  .activity-time {
+    width: fit-content;
   }
 
   .contact-line {
