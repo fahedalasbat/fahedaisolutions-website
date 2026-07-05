@@ -16,7 +16,7 @@
       kicker: "Founder-led software systems",
       title: "Practical AI and software systems for business operations.",
       subtitle: "Fahed AI Solutions builds dashboards, automation, CRM workflows, AI assistants, web applications, and operations systems for clearer daily work.",
-      proof: ["Dashboards", "Automation", "CRM", "AI Assistants", "Web Applications", "Operations Systems"]
+      proof: ["Dashboards", "CRM", "Automation", "AI Assistants", "Finance & Marketing Ops", "Web Applications"]
     },
     services: [
       {
@@ -62,8 +62,8 @@
       {
         title: "Business Operations Systems",
         label: "End-to-end tooling",
-        description: "Operational systems that combine dashboards, workflows, CRM surfaces, and internal tools.",
-        includes: ["System maps", "Admin views", "Data tables", "Reusable patterns"],
+        description: "Internal systems for reporting, finance visibility, invoice tracking, marketing performance, and team workflows.",
+        includes: ["Internal reporting", "Finance visibility", "Invoice tracking", "Marketing performance"],
         mockup: { type: "system", modules: ["Dashboard", "CRM", "Automation", "Assistant"] },
         tone: "green"
       }
@@ -71,19 +71,11 @@
     portfolio: [
       {
         title: "Business Operations Dashboard Demo",
-        type: "Dashboard",
+        type: "Business Operations",
         description: "A sample operations dashboard with KPI cards, charts, tables, and task views.",
         href: "./demos/business-operations-dashboard/index.html?capture=1",
         label: "Demo / Sample Data",
         tone: "blue"
-      },
-      {
-        title: "Automation Workflow Demo",
-        type: "Automation",
-        description: "A sample workflow interface for triggers, actions, status, and review.",
-        href: "./demos/automation-workflow/index.html?capture=1",
-        label: "Demo / Sample Data",
-        tone: "green"
       },
       {
         title: "CRM Pipeline Demo",
@@ -92,6 +84,14 @@
         href: "./demos/crm-pipeline/index.html?capture=1",
         label: "Demo / Sample Data",
         tone: "amber"
+      },
+      {
+        title: "Automation Workflow Demo",
+        type: "Automation",
+        description: "A sample workflow interface for triggers, actions, status, and review.",
+        href: "./demos/automation-workflow/index.html?capture=1",
+        label: "Demo / Sample Data",
+        tone: "green"
       },
       {
         title: "Business AI Assistant Demo",
@@ -108,6 +108,14 @@
         href: "demos/invoice-payment-tracker/index.html",
         label: "Demo / Sample Data",
         tone: "blue"
+      },
+      {
+        title: "Ad Spend & ROAS Tracker Demo",
+        type: "Marketing Operations",
+        description: "A sample marketing performance dashboard for tracking ad spend, campaign results, ROAS, leads, purchases, and budget visibility.",
+        href: "demos/ad-spend-roas-tracker/index.html?v=portfolio-demos-final-1",
+        label: "Demo / Sample Data",
+        tone: "green"
       }
     ],
     process: [

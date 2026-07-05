@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ad Spend &amp; ROAS Tracker Demo | Fahed AI Solutions</title>
+    <meta name="description" content="A runnable ad spend and ROAS tracker demo by Fahed AI Solutions using sample data only.">
+    <link rel="stylesheet" href="styles.css?v=portfolio-demos-final-1">
+  </head>
+  <body>
+    <div class="ads-shell">
+      <header class="topbar">
+        <div class="brand-block">
+          <span class="brand-mark" aria-hidden="true">FA</span>
+          <div>
+            <p class="brand-name">Fahed AI Solutions</p>
+            <span class="demo-badge" id="demoLabel">Ad Spend &amp; ROAS Tracker Demo - Sample Data</span>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section class="hero-grid">
+          <div class="hero-panel">
+            <p class="section-kicker">Portfolio Demo</p>
+            <h1 id="demoTitle">Ad Spend &amp; ROAS Tracker Demo</h1>
+            <p id="demoScope">Sample marketing operations dashboard for tracking ad spend, campaign results, ROAS, leads, purchases, and budget visibility.</p>
+            <span class="mobile-sample-period" id="mobileSamplePeriod">Sample view: July 2026</span>
+          </div>
+          <aside class="sample-panel">
+            <span id="samplePeriod">Sample view: July 2026</span>
+            <strong>Marketing performance and budget visibility view</strong>
+            <p id="demoDisclaimer">Demo/sample data only. Not real ad account data.</p>
+          </aside>
+        </section>
+
+        <section class="kpi-grid" id="kpiGrid" aria-label="Sample marketing KPI cards"></section>
+
+        <section class="chart-panel" aria-label="Sample campaign performance overview">
+          <div class="panel-header">
+            <div>
+              <p class="section-kicker">Performance</p>
+              <h2>Campaign Performance Overview</h2>
+            </div>
+            <span class="panel-note">Spend, value, and sample ROAS</span>
+          </div>
+          <div class="chart-wrap" id="performanceChart"></div>
+          <div class="chart-legend" aria-label="Chart legend">
+            <span><i class="legend-spend"></i>Ad spend</span>
+            <span><i class="legend-value"></i>Conversion value</span>
+            <span><i class="legend-roas"></i>ROAS trend</span>
+          </div>
+        </section>
+
+        <section class="campaign-panel" aria-label="Sample campaign table">
+          <div class="panel-header">
+            <div>
+              <p class="section-kicker">Campaigns</p>
+              <h2>Campaign Table</h2>
+            </div>
+              <span class="panel-note">Highlighted sample campaigns</span>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Campaign</th>
+                  <th>Platform</th>
+                  <th>Spend</th>
+                  <th>Budget</th>
+                  <th>Leads</th>
+                  <th>Purchases</th>
+                  <th>Conversion Value</th>
+                  <th>ROAS</th>
+                  <th>Status</th>
+                  <th>Suggested Action</th>
+                </tr>
+              </thead>
+              <tbody id="campaignTable"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="insight-grid" aria-label="Sample marketing insights">
+          <article class="panel platform-panel">
+            <div class="panel-header">
+              <div>
+                <p class="section-kicker">Channels</p>
+                <h2>Platform Breakdown</h2>
+              </div>
+              <span class="panel-note">Sample platform view</span>
+            </div>
+            <div class="platform-list" id="platformBreakdown"></div>
+          </article>
+
+          <article class="panel budget-panel">
+            <div class="panel-header">
+              <div>
+                <p class="section-kicker">Budget</p>
+                <h2>Budget Pacing</h2>
+              </div>
+              <span class="panel-note">Demo budget view</span>
+            </div>
+            <div class="budget-card" id="budgetPacing"></div>
+          </article>
+        </section>
+
+        <section class="operations-grid" aria-label="Sample marketing operations">
+          <article class="panel action-panel">
+            <div class="panel-header">
+              <div>
+                <p class="section-kicker">Review</p>
+                <h2>Owner Review / Suggested Actions</h2>
+              </div>
+              <span class="panel-note">Human review</span>
+            </div>
+            <ul class="action-list" id="ownerActions"></ul>
+          </article>
+
+          <article class="panel activity-panel">
+            <div class="panel-header">
+              <div>
+                <p class="section-kicker">Timeline</p>
+                <h2>Recent Marketing Activity</h2>
+              </div>
+              <span class="panel-note">Sample log</span>
+            </div>
+            <ul class="activity-list" id="activityLog"></ul>
+          </article>
+
+          <article class="panel safety-panel">
+            <div class="panel-header">
+              <div>
+                <p class="section-kicker">Safety</p>
+                <h2>Demo Note</h2>
+              </div>
+              <span class="panel-note">Sample only</span>
+            </div>
+            <p id="safetyNote">Demo/sample data only. Not real ad account data. No ad platform is connected in this demo. No advertising results are guaranteed.</p>
+          </article>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div class="footer-brand">
+          <strong>Fahed AI Solutions</strong>
+          <span>Lebanon | Remote</span>
+        </div>
+        <div class="footer-contact">
+          <a href="mailto:fahed.sbat@icloud.com">Email: fahed.sbat@icloud.com</a>
+          <a href="https://wa.me/96181908355" target="_blank" rel="noopener">WhatsApp: +961 81 908 355</a>
+        </div>
+        <span class="footer-version" id="footerVersion">Ad Spend &amp; ROAS Tracker Demo v1</span>
+        <span class="footer-disclaimer">Demo/sample data only. Not a real client ad account dashboard. No advertising results are guaranteed.</span>
+        <span class="footer-rights">&copy; 2026 Fahed AI Solutions &mdash; All rights reserved.</span>
+      </footer>
+    </div>
+
+    <script src="sample-data.js?v=portfolio-demos-final-1"></script>
+    <script src="app.js?v=portfolio-demos-final-1"></script>
+  </body>
+</html>
