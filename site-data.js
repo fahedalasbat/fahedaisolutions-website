@@ -100,6 +100,14 @@
         href: "demos/ai-assistant/index.html?v=ai-motion-2",
         label: "Demo / Sample Data",
         tone: "violet"
+      },
+      {
+        title: "Invoice & Payment Tracker Demo",
+        type: "Finance Operations",
+        description: "A sample invoice tracking interface for paid, unpaid, overdue, and follow-up payment visibility.",
+        href: "demos/invoice-payment-tracker/index.html",
+        label: "Demo / Sample Data",
+        tone: "blue"
       }
     ],
     process: [

@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Invoice &amp; Payment Tracker Demo | Fahed AI Solutions</title>
+    <meta name="description" content="A runnable invoice and payment tracker demo by Fahed AI Solutions using sample data only.">
+    <link rel="stylesheet" href="styles.css?v=invoice-demo-1">
+  </head>
+  <body>
+    <div class="invoice-shell">
+      <header class="topbar">
+        <div class="brand-block">
+          <span class="brand-mark" aria-hidden="true">FA</span>
+          <div>
+            <p class="brand-name">Fahed AI Solutions</p>
+            <span class="demo-badge" id="demoLabel">Invoice &amp; Payment Tracker Demo - Sample Data</span>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section class="hero-grid">
+          <div class="hero-panel">
+            <p class="section-kicker">Portfolio Demo</p>
+            <h1 id="demoTitle">Invoice &amp; Payment Tracker Demo</h1>
+            <p id="demoScope">Sample invoice operations dashboard for tracking paid, unpaid, overdue, and follow-up payments.</p>
+            <span class="mobile-sample-period" id="mobileSamplePeriod">Sample view: July 2026</span>
+          </div>
+          <aside class="sample-panel">
+            <span id="samplePeriod">Sample view: July 2026</span>
+            <strong>Invoice visibility and payment follow-up view</strong>
+            <p id="demoDisclaimer">Demo/sample data only. Not real client financial data.</p>
+          </aside>
+        </section>
+
+        <section class="kpi-grid" id="kpiGrid" aria-label="Sample invoice KPI cards"></section>
+
+        <section class="dashboard-grid" aria-label="Sample invoice dashboard sections">
+          <article class="panel status-panel">
+            <div class="panel-header">
+              <div>
+                <p class="section-kicker">Overview</p>
+                <h2>Invoice Status Overview</h2>
+              </div>
+              <span class="panel-note">42 total + review flags</span>
+            </div>
+            <div class="status-overview" id="statusOverview"></div>
+          </article>
+
+          <article class="panel aging-panel">
+            <div class="panel-header">
+              <div>
+                <p class="section-kicker">Aging</p>
+                <h2>Aging Breakdown</h2>
+              </div>
+              <span class="panel-note">Outstanding sample</span>
+            </div>
+            <div class="aging-list" id="agingBreakdown"></div>
+          </article>
+        </section>
+
+        <section class="invoice-panel" aria-label="Sample invoice cards">
+          <div class="panel-header">
+            <div>
+              <p class="section-kicker">Invoices</p>
+              <h2>Invoice Cards</h2>
+            </div>
+            <span class="panel-note">Demo records only</span>
+          </div>
+          <div class="invoice-grid" id="invoiceCards"></div>
+        </section>
+
+        <section class="operations-grid" aria-label="Sample invoice operations">
+          <article class="panel follow-panel">
+            <div class="panel-header">
+              <div>
+                <p class="section-kicker">Queue</p>
+                <h2>Follow-Up Queue</h2>
+              </div>
+              <span class="panel-note">No automatic sending</span>
+            </div>
+            <ul class="follow-list" id="followQueue"></ul>
+          </article>
+
+          <article class="panel activity-panel">
+            <div class="panel-header">
+              <div>
+                <p class="section-kicker">Timeline</p>
+                <h2>Recent Payment Activity</h2>
+              </div>
+              <span class="panel-note">Sample log</span>
+            </div>
+            <ul class="activity-list" id="activityLog"></ul>
+          </article>
+
+          <article class="panel owner-panel">
+            <div class="panel-header">
+              <div>
+                <p class="section-kicker">Review</p>
+                <h2>Review / Owner Action</h2>
+              </div>
+              <span class="panel-note">Human review</span>
+            </div>
+            <ul class="owner-list" id="ownerActions"></ul>
+          </article>
+
+          <article class="panel safety-panel">
+            <div class="panel-header">
+              <div>
+                <p class="section-kicker">Safety</p>
+                <h2>Demo Note</h2>
+              </div>
+              <span class="panel-note">Sample only</span>
+            </div>
+            <p id="safetyNote">Demo/sample data only. No real client financial data. No payment is processed from this demo.</p>
+          </article>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div class="footer-brand">
+          <strong>Fahed AI Solutions</strong>
+          <span>Lebanon | Remote</span>
+        </div>
+        <div class="footer-contact">
+          <a href="mailto:fahed.sbat@icloud.com">Email: fahed.sbat@icloud.com</a>
+          <a href="https://wa.me/96181908355" target="_blank" rel="noopener">WhatsApp: +961 81 908 355</a>
+        </div>
+        <span class="footer-version" id="footerVersion">Invoice &amp; Payment Tracker Demo v1</span>
+        <span class="footer-disclaimer">Demo/sample data only. Not a real client financial dashboard.</span>
+        <span class="footer-rights">&copy; 2026 Fahed AI Solutions &mdash; All rights reserved.</span>
+      </footer>
+    </div>
+
+    <script src="sample-data.js"></script>
+    <script src="app.js?v=invoice-demo-1"></script>
+  </body>
+</html>
