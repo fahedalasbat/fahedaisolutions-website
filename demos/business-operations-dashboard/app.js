@@ -107,14 +107,14 @@
       <div class="sales-chart-frame">
         <div class="sales-y-axis" aria-hidden="true">${yAxis}</div>
         <div class="sales-chart-columns" role="img" aria-label="Sales by Week sample values from Week 1 to Week 5">
-          <div class="sales-plot-layer" aria-hidden="true">
-            ${gridLines}
+          <div class="sales-grid-layer" aria-hidden="true">${gridLines}</div>
+          ${columns}
+          <div class="sales-trend-layer" aria-hidden="true">
             <svg class="sales-trend-svg" viewBox="0 0 100 100" preserveAspectRatio="none" focusable="false">
               <path class="trend-line" pathLength="1" d="${path}"></path>
               <g class="trend-markers">${markers}</g>
             </svg>
           </div>
-          ${columns}
         </div>
       </div>
     `;

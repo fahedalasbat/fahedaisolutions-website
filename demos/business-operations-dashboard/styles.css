@@ -378,11 +378,19 @@ h2 {
   min-width: 0;
 }
 
-.sales-plot-layer {
+.sales-grid-layer,
+.sales-trend-layer {
   position: absolute;
   inset: 0 0 34px;
-  z-index: 0;
   pointer-events: none;
+}
+
+.sales-grid-layer {
+  z-index: 0;
+}
+
+.sales-trend-layer {
+  z-index: 2;
 }
 
 .chart-grid-line {
@@ -434,11 +442,11 @@ h2 {
 
 .trend-line {
   fill: none;
-  stroke: rgba(82, 182, 255, 0.58);
+  stroke: rgba(82, 182, 255, 0.64);
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-width: 1.6;
-  filter: drop-shadow(0 0 5px rgba(55, 213, 255, 0.12));
+  filter: drop-shadow(0 0 5px rgba(55, 213, 255, 0.16));
 }
 
 .trend-dot {
@@ -828,7 +836,8 @@ body.capture-mode .sales-y-axis {
   margin-bottom: 30px;
 }
 
-body.capture-mode .sales-plot-layer {
+body.capture-mode .sales-grid-layer,
+body.capture-mode .sales-trend-layer {
   bottom: 30px;
 }
 
@@ -1145,7 +1154,8 @@ body.capture-mode .footer {
     margin-bottom: 32px;
   }
 
-  .sales-plot-layer {
+  .sales-grid-layer,
+  .sales-trend-layer {
     bottom: 32px;
   }
 
@@ -1159,6 +1169,17 @@ body.capture-mode .footer {
 
   .sales-bar {
     width: clamp(13px, 22%, 18px);
+  }
+
+  .trend-line {
+    stroke: rgba(82, 182, 255, 0.78);
+    stroke-width: 1.8;
+    filter: drop-shadow(0 0 6px rgba(55, 213, 255, 0.2));
+  }
+
+  .trend-dot {
+    fill: rgba(218, 249, 255, 0.9);
+    stroke: rgba(55, 213, 255, 0.42);
   }
 
   .chart-x-value {
