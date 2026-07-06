@@ -1,7 +1,7 @@
 window.crmDemoData = {
   meta: {
     brand: "Fahed AI Solutions",
-    label: "CRM Demo - Sample Data",
+    label: "CRM Demo · Sample Data",
     title: "CRM Pipeline Demo",
     version: "CRM Demo v1",
     scope: "Sample CRM interface for tracking leads, follow-ups, proposals, and owner review actions.",

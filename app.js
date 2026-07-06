@@ -246,7 +246,7 @@
           <h3>${escapeHTML(item.title)}</h3>
           <p>${escapeHTML(item.description)}</p>
           <a class="demo-link" href="${escapeHTML(item.href)}" target="_blank" rel="noopener">
-            Open demo asset
+            View sample demo
           </a>
         </article>
       `;

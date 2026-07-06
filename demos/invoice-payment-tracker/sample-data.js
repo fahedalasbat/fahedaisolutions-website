@@ -1,6 +1,6 @@
 window.invoicePaymentTrackerData = {
   meta: {
-    label: "Invoice & Payment Tracker Demo - Sample Data",
+    label: "Invoice Tracker Demo · Sample Data",
     title: "Invoice & Payment Tracker Demo",
     scope: "Sample invoice operations dashboard for tracking paid, unpaid, overdue, and follow-up payments.",
     period: "Sample view: July 2026",

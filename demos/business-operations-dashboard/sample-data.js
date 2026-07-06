@@ -1,9 +1,9 @@
 window.dashboardData = {
   meta: {
     brand: "Fahed AI Solutions",
-    label: "Demo Dashboard - Sample Data",
+    label: "Operations Dashboard Demo · Sample Data",
     title: "Business Operations Dashboard Demo",
-    scope: "Static sample dashboard for portfolio, proposal, website, LinkedIn Featured, and presentation use.",
+    scope: "Sample operations dashboard for tracking monthly activity, leads, orders, stock, tasks, and business performance.",
     disclaimer: "All values, activities, SKUs, tasks, and chart data are sample/demo data only.",
     lastUpdated: "Sample period: July 2026"
   },

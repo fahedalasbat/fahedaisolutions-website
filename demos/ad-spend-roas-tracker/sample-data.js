@@ -1,6 +1,6 @@
 window.adSpendRoasTrackerData = {
   meta: {
-    label: "Ad Spend & ROAS Tracker Demo - Sample Data",
+    label: "Ad Spend Demo · Sample Data",
     title: "Ad Spend & ROAS Tracker Demo",
     scope: "Sample marketing operations dashboard for tracking ad spend, campaign results, ROAS, leads, purchases, and budget visibility.",
     period: "Sample view: July 2026",

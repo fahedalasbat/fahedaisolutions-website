@@ -1,7 +1,7 @@
 window.aiAssistantDemoData = {
   meta: {
     brand: "Fahed AI Solutions",
-    label: "AI Assistant Demo - Sample Data",
+    label: "AI Assistant Demo · Sample Data",
     title: "Business AI Assistant Demo",
     version: "AI Assistant Demo v1",
     scope: "Safe sample interface for drafting replies, reviewing business context, and preparing owner-approved actions.",

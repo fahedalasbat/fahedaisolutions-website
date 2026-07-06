@@ -5,7 +5,7 @@
       founder: "Fahed Al Asbat",
       role: "AI & Software Engineer",
       location: "Lebanon | Remote",
-      label: "Demo / Sample Data",
+      label: "Sample portfolio demos",
       email: "fahed.sbat@icloud.com",
       whatsapp: "+961 81 908 355",
       linkedin: "https://www.linkedin.com/in/fahed-al-asbat-6b540341b",
@@ -15,7 +15,7 @@
     hero: {
       kicker: "Founder-led software systems",
       title: "Practical AI and software systems for business operations.",
-      subtitle: "Fahed AI Solutions builds dashboards, automation, CRM workflows, AI assistants, web applications, and operations systems for clearer daily work.",
+      subtitle: "We help businesses turn scattered work from WhatsApp, Excel, invoices, ads, tasks, and follow-ups into clear dashboards, CRM workflows, automation, AI assistants, and web applications.",
       proof: ["Dashboards", "CRM", "Automation", "AI Assistants", "Finance & Marketing Ops", "Web Applications"]
     },
     services: [
@@ -163,8 +163,8 @@
     },
     contact: {
       links: [
-        { label: "Email", value: "fahed.sbat@icloud.com", href: "mailto:fahed.sbat@icloud.com", tone: "blue" },
-        { label: "WhatsApp", value: "+961 81 908 355", href: "https://wa.me/96181908355", tone: "green" },
+        { label: "Email — fahed.sbat@icloud.com", value: "fahed.sbat@icloud.com", href: "mailto:fahed.sbat@icloud.com", tone: "blue" },
+        { label: "WhatsApp — +961 81 908 355", value: "+961 81 908 355", href: "https://wa.me/96181908355", tone: "green" },
         { label: "LinkedIn", value: "Fahed Al Asbat", href: "https://www.linkedin.com/in/fahed-al-asbat-6b540341b", tone: "blue" },
         { label: "GitHub", value: "fahedalasbat", href: "https://github.com/fahedalasbat", tone: "neutral" }
       ]

@@ -1,7 +1,7 @@
 window.automationWorkflowData = {
   meta: {
     brand: "Fahed AI Solutions",
-    label: "Automation Workflow Demo - Sample Data",
+    label: "Automation Demo · Sample Data",
     title: "Automation Workflow Demo",
     version: "Automation Workflow Demo v1",
     scope: "A sample workflow showing how a lead can move through checks, task creation, notifications, dashboard updates, and human review.",
