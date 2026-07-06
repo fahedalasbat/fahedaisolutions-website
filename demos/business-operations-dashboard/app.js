@@ -1,5 +1,9 @@
 (function () {
   const data = window.dashboardData;
+  const SALES_CHART_MAX_VALUE = 6000;
+  let salesTrendFrame = 0;
+  let salesTrendEventsBound = false;
+  let salesChartResizeObserver = null;
 
   function applyCaptureMode() {
     const params = new URLSearchParams(window.location.search);
@@ -37,6 +41,87 @@
     return "$" + value.toLocaleString("en-US");
   }
 
+  function getSalesChartTop(value) {
+    return 100 - ((value / SALES_CHART_MAX_VALUE) * 100);
+  }
+
+  function renderSalesTrend() {
+    const chart = getElement("salesChart");
+
+    if (!chart) {
+      return;
+    }
+
+    const layer = chart.querySelector(".sales-trend-layer");
+    const svg = chart.querySelector(".sales-trend-svg");
+    const groups = Array.from(chart.querySelectorAll(".sales-week-group"));
+
+    if (!layer || !svg || groups.length !== data.salesByWeek.length) {
+      return;
+    }
+
+    const layerRect = layer.getBoundingClientRect();
+
+    if (layerRect.width <= 0 || layerRect.height <= 0) {
+      return;
+    }
+
+    const points = data.salesByWeek.map((item, index) => {
+      const groupRect = groups[index].getBoundingClientRect();
+      const x = groupRect.left + (groupRect.width / 2) - layerRect.left;
+      const y = (getSalesChartTop(item.value) / 100) * layerRect.height;
+
+      return {
+        x: Math.round(x * 100) / 100,
+        y: Math.round(y * 100) / 100
+      };
+    });
+
+    const path = points.map((point, index) => {
+      return `${index === 0 ? "M" : "L"} ${point.x} ${point.y}`;
+    }).join(" ");
+
+    const markers = points.map((point) => {
+      return `<circle class="trend-dot" cx="${point.x}" cy="${point.y}" r="3"></circle>`;
+    }).join("");
+
+    svg.setAttribute("viewBox", `0 0 ${layerRect.width.toFixed(2)} ${layerRect.height.toFixed(2)}`);
+    svg.setAttribute("width", layerRect.width.toFixed(2));
+    svg.setAttribute("height", layerRect.height.toFixed(2));
+    svg.innerHTML = `
+      <path class="trend-line" d="${path}"></path>
+      <g class="trend-markers">${markers}</g>
+    `;
+  }
+
+  function queueSalesTrendRender() {
+    if (salesTrendFrame) {
+      window.cancelAnimationFrame(salesTrendFrame);
+    }
+
+    salesTrendFrame = window.requestAnimationFrame(() => {
+      salesTrendFrame = window.requestAnimationFrame(() => {
+        salesTrendFrame = 0;
+        renderSalesTrend();
+      });
+    });
+  }
+
+  function bindSalesTrendRefresh() {
+    if (salesTrendEventsBound) {
+      return;
+    }
+
+    salesTrendEventsBound = true;
+    window.addEventListener("load", queueSalesTrendRender, { once: true });
+    window.addEventListener("resize", queueSalesTrendRender, { passive: true });
+
+    if ("ResizeObserver" in window) {
+      salesChartResizeObserver = new ResizeObserver(queueSalesTrendRender);
+      salesChartResizeObserver.observe(getElement("salesChart"));
+    }
+  }
+
   function renderKpis() {
     const grid = getElement("kpiGrid");
     grid.innerHTML = data.kpis.map((kpi) => {
@@ -52,53 +137,37 @@
 
   function renderSalesChart() {
     const chart = getElement("salesChart");
-    const maxValue = 6000;
     const guideValues = [6000, 4000, 2000, 0];
     const columnCount = data.salesByWeek.length;
-    const getTop = (value) => 100 - ((value / maxValue) * 100);
 
     const yAxis = guideValues.map((value) => {
-      const top = getTop(value);
+      const top = getSalesChartTop(value);
       const label = value === 0 ? "$0" : "$" + (value / 1000) + "k";
 
       return `<span class="chart-y-label" style="top: ${top}%">${label}</span>`;
     }).join("");
 
     const gridLines = guideValues.map((value) => {
-      const top = getTop(value);
+      const top = getSalesChartTop(value);
 
       return `<span class="chart-grid-line" style="top: ${top}%"></span>`;
     }).join("");
 
-    const points = data.salesByWeek.map((item, index) => {
-      const x = ((index + 0.5) / columnCount) * 100;
-      const y = getTop(item.value);
-      return { x, y, item };
-    });
-
-    const path = points.map((point, index) => {
-      return `${index === 0 ? "M" : "L"} ${point.x} ${point.y}`;
-    }).join(" ");
-
-    const markers = points.map((point) => {
-      return `<circle class="trend-dot" cx="${point.x}" cy="${point.y}" r="2.2"></circle>`;
-    }).join("");
-
-    const columns = points.map((point, index) => {
-      const barHeight = Math.max(10, Math.round((point.item.value / maxValue) * 100));
-      const formattedValue = formatCurrency(point.item.value);
+    const columns = data.salesByWeek.map((item, index) => {
+      const barHeight = Math.max(10, Math.round((item.value / SALES_CHART_MAX_VALUE) * 100));
+      const formattedValue = formatCurrency(item.value);
 
       return `
         <div
           class="sales-week-group"
           style="--bar-height: ${barHeight}%; --bar-delay: ${index * 70}ms"
-          aria-label="${escapeHTML(point.item.label)}: ${escapeHTML(formattedValue)}"
+          aria-label="${escapeHTML(item.label)}: ${escapeHTML(formattedValue)}"
         >
           <div class="sales-bar-track">
-            <span class="sales-bar" title="${escapeHTML(point.item.label)}: ${escapeHTML(formattedValue)}"></span>
+            <span class="sales-bar" title="${escapeHTML(item.label)}: ${escapeHTML(formattedValue)}"></span>
           </div>
           <strong class="chart-x-value">${escapeHTML(formattedValue)}</strong>
-          <em class="chart-x-label">${escapeHTML(point.item.label)}</em>
+          <em class="chart-x-label">${escapeHTML(item.label)}</em>
         </div>
       `;
     }).join("");
@@ -110,14 +179,15 @@
           <div class="sales-grid-layer" aria-hidden="true">${gridLines}</div>
           ${columns}
           <div class="sales-trend-layer" aria-hidden="true">
-            <svg class="sales-trend-svg" viewBox="0 0 100 100" preserveAspectRatio="none" focusable="false">
-              <path class="trend-line" pathLength="1" d="${path}"></path>
-              <g class="trend-markers">${markers}</g>
-            </svg>
+            <svg class="sales-trend-svg" preserveAspectRatio="none" focusable="false"></svg>
           </div>
         </div>
       </div>
     `;
+
+    if (columnCount > 0) {
+      queueSalesTrendRender();
+    }
   }
 
   function renderLeadSources() {
@@ -230,6 +300,7 @@
     renderMeta();
     renderKpis();
     renderSalesChart();
+    bindSalesTrendRefresh();
     renderLeadSources();
     renderOrdersStatus();
     renderRecentActivity();

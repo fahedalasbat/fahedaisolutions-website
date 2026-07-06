@@ -1188,22 +1188,6 @@ h1 {
   transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
 }
 
-.service-card::after,
-.portfolio-card::after {
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: color-mix(in srgb, var(--tone, var(--color-blue)) 78%, white);
-  box-shadow: 0 0 10px color-mix(in srgb, var(--tone, var(--color-blue)) 32%, transparent);
-  opacity: 0.42;
-  content: "";
-  pointer-events: none;
-  animation: launchDotPulse 2.6s ease-in-out infinite;
-}
-
 .service-card:hover,
 .portfolio-card:hover,
 .process-card:hover,
@@ -1411,17 +1395,6 @@ h1 {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-}
-
-.portfolio-card .card-topline em::before {
-  width: 6px;
-  height: 6px;
-  flex: 0 0 6px;
-  border-radius: 50%;
-  background: var(--tone, var(--color-cyan));
-  box-shadow: 0 0 12px var(--tone, var(--color-cyan));
-  content: "";
-  animation: statusPulse 1.9s ease-in-out infinite;
 }
 
 .service-card h3,
@@ -2004,19 +1977,6 @@ h1 {
   }
 }
 
-@keyframes launchDotPulse {
-  0%,
-  100% {
-    opacity: 0.34;
-    transform: scale(0.88);
-  }
-
-  50% {
-    opacity: 0.62;
-    transform: scale(1.08);
-  }
-}
-
 @keyframes commandScan {
   0% {
     transform: translateX(-72%);
@@ -2383,10 +2343,6 @@ h1 {
   .value-row,
   .site-footer {
     grid-template-columns: 1fr;
-  }
-
-  .service-card::after {
-    display: none;
   }
 
   .portfolio-card {
