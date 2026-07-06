@@ -179,20 +179,23 @@
     }
 
     if (mockup.type === "assistant") {
-      const sampleRequest = mockup.messages[0] || "Sample request";
-      const draftStatus = mockup.messages[1] || "Draft ready for review";
-
       return `
         <div class="service-mockup assistant-mockup" aria-hidden="true">
-          <p class="assistant-service-bubble">${escapeHTML(sampleRequest)}</p>
-          <div class="assistant-service-draft">
-            <span>${escapeHTML(draftStatus)}</span>
+          <div class="assistant-service-status">
+            <span>Assistant status</span>
+            <strong>Intake &rarr; Draft &rarr; Review</strong>
+          </div>
+          <p class="assistant-service-bubble assistant-service-request">Sample request received.</p>
+          <div class="assistant-service-typing">
+            <span>AI Assistant is drafting</span>
             <div class="assistant-service-dots">
               <i></i>
               <i></i>
               <i></i>
             </div>
           </div>
+          <p class="assistant-service-bubble assistant-service-response">Draft ready for human review.</p>
+          <span class="assistant-service-review">Human review required</span>
         </div>
       `;
     }
